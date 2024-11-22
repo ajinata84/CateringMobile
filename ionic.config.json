@@ -1,0 +1,7 @@
+{
+  "name": "Catering",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react-vite"
+}
