@@ -1,7 +1,13 @@
-import React from 'react'
+import CateringList from "@/components/CateringList";
+import SearchFilters from "@/components/SearchFilters";
+
+import React from "react";
 
 export default function Beranda() {
   return (
-    <div>Berandaindex</div>
-  )
+    <div className="p-8">
+      <SearchFilters />
+      <CateringList />
+    </div>
+  );
 }
