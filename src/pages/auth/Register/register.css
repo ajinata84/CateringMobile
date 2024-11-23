@@ -1,0 +1,83 @@
+/* Card styling */
+.register-card {
+  display: flex;
+  justify-items: center;
+  justify-content: center;
+  justify-self: center;
+  width: 90%;
+  max-width: 400px;
+  border-radius: 30px;
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+  max-height: 800px;
+}
+
+/* Title styling */
+.register-title {
+  text-align: center;
+  font-size: 30px;
+  font-weight: bold;
+  color: #2e7d32;
+  margin-bottom: 20px;
+}
+
+/* Tabs styling */
+.register-tabs {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.tab-button {
+  border-radius: 20px;
+}
+
+.tab-button.active {
+  background-color: #2e7d32;
+  color: white;
+}
+
+/* Input fields styling */
+.input-item {
+  margin-bottom: 15px;
+}
+
+.input-item .ion-label {
+  color: #666;
+}
+
+.input-item .ion-input {
+  background-color: #f1f1f1;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+/* Forgot password */
+.forgot-password {
+  text-align: right;
+  display: block;
+  margin: 10px 0;
+  color: #2e7d32;
+  cursor: pointer;
+}
+
+/* register button */
+.register-button {
+  border-radius: 20px;
+  background-color: #2e7d32;
+  font-size: 16px;
+  font-weight: bold;
+  color: white;
+}
+
+/* Register link */
+.login-link {
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.link {
+  color: #2e7d32;
+  font-weight: bold;
+  text-decoration: underline;
+}
