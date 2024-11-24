@@ -11,12 +11,12 @@ export default function Login() {
   return (
     <IonPage>
       <IonContent className="login-page">
-        <div className="Layout flex justify-center items-center h-screen">
+        <div className="Layout flex flex-col justify-center items-center h-screen">
+          <IonText color="dark">
+            <h1 className="login-title">Login</h1> 
+          </IonText>
           <IonCard className="login-card">
             <IonCardContent>
-              <IonText color="dark">
-                <h1 className="login-title">Login</h1>
-              </IonText>
               <IonRow className="login-tabs">
                 <IonCol size="6">
                   <IonButton expand="block" className="tab-button active">

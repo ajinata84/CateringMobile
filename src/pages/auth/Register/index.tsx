@@ -11,12 +11,12 @@ export default function Register() {
   return (
     <IonPage>
       <IonContent className="register-page">
-        <div className="Layout flex justify-center items-center h-screen">
+        <div className="Layout flex flex-col justify-center items-center h-screen relative">
+          <IonText color="dark">
+            <h1 className="register-title">Register</h1>
+          </IonText>
           <IonCard className="register-card">
             <IonCardContent>
-              <IonText color="dark">
-                <h1 className="register-title">Login</h1>
-              </IonText>
               <IonRow className="register-tabs">
                 <IonCol size="6">
                   <IonButton expand="block" fill="outline" className="tab-button" routerLink="/login">
