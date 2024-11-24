@@ -1,38 +1,64 @@
 /* Styling untuk container utama */
 .catering-container {
-    padding: 16px;
+    /* padding: 16px; */
     font-family: Arial, sans-serif;
     background-color: #f4f4f4;
     min-height: 100vh;
-    justify-content: flex-start; /* Card di sebelah kiri */
-    align-items: flex-start; /* Menyusun item dari atas */
     width: 100%; /* Pastikan lebar container full */
-    margin-left: 0;
 }
 
 /* Card untuk setiap catering */
 .catering-card {
-    display: flex;
-    gap: 16px;
     border: none; /* Hapus outline border */
     border-radius: 8px; /* Tetap menjaga sudut melengkung */
-    padding: 16px;
     background-color: #fff;
     box-shadow: none; /* Hapus shadow jika outline berasal dari efek shadow */
-    align-items: flex-start;
+    align-items: flex-start !important;
     margin-bottom: 16px;
-    justify-content: flex-start; 
-    margin-left: 0px;
+    justify-content: flex-start !important; 
+    margin-left: 0px !important;
+    padding: none;
 }
+
+/* Reset semua gaya default IonCard */
+ion-card {
+    all: unset;
+    display: block;
+    background-color: transparent;
+  }
+  
+  /* Reset IonCardContent */
+  ion-card-content {
+    all: unset;
+    display: block;
+  }
+
+
+
+  .catering-container ion-card {
+    margin: 0 !important;
+    padding-bottom: 10px !important;
+    box-shadow: none !important;
+    background-color: transparent !important;
+  }
+  
+  .catering-container ion-card-content {
+    padding: 0 !important;
+    padding-top: 15px !important;
+  }
+
+
 
 
 /* Styling untuk gambar catering */
 .catering-image {
     width: 120px;
     height: 120px;
+    flex-grow: 0;
     border-radius: 28px;
     object-fit: cover;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+    float: left;
 }
 
 /* Container untuk konten di samping gambar */
@@ -45,7 +71,7 @@
 
 /* Styling untuk judul catering */
 .catering-title {
-    font-size: 1.1rem !important; /* Ukuran proporsional */
+    font-size: 1rem !important; /* Ukuran proporsional */
     font-weight: bold !important; /* Teks tebal */
     margin: 0 0 8px; /* Jarak bawah */
     color: #000; /* Warna teks hitam */
@@ -64,7 +90,7 @@
 .rating-container {
     position: absolute;
     top: 110px; /* Sesuaikan jarak dari atas gambar */
-    left: 24%; /* Pastikan ini sesuai layout */
+    left: 20%; /* Pastikan ini sesuai layout */
     transform: translateX(-50%);
     background-color: #fff;
     color: #333;
@@ -82,11 +108,11 @@
 
 /* Container untuk gambar dan konten dalam card */
 .catering-card-inner {
-    display: flex; /* Mengatur gambar dan konten sejajar secara horizontal */
+    display: flex !important; /* Mengatur gambar dan konten sejajar secara horizontal */
     gap: 27px; /* Jarak antara gambar dan konten */
     width: 100%;
-    align-items: flex-start; /* Memastikan konten berada di atas gambar */
-    justify-content: flex-start;
+    align-items: flex-start !important; /* Memastikan konten berada di atas gambar */
+    justify-content: flex-start !important;
 }
 
 
