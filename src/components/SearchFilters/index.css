@@ -1,0 +1,107 @@
+/* SEARCH BAR */
+
+ion-searchbar.custom {
+  --background: transparent;
+  --placeholder-color: #597445;
+  --color: #597445;
+  --icon-color: #597445;
+  --border-color: transparent;
+  --clear-button-color: #597445;
+  box-shadow: none;
+  border: 2px solid #597445;
+  border-radius: 15px;
+  padding: 0 5px;
+}
+
+ion-searchbar.custom .searchbar-input {
+  background: transparent;
+  box-shadow: none;
+  margin-left: 5px;
+}
+
+/* LOCATION & HISTORY */
+
+ion-grid {
+  padding: 10px 0;
+}
+
+.location-history ion-row {
+  display: flex;
+  gap: 6px;
+}
+
+.location-history ion-col {
+  border: 2px solid #d9e0d6;
+  border-radius: 15px;
+  color: #000000;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  padding: 6px 5px;
+  font-size: 14px;
+}
+
+ion-col p {
+  font-size: 13px;
+  font-weight: 600;
+  text-align: center;
+  flex-grow: 1;
+}
+
+ion-col .icon {
+  flex-shrink: 0;
+}
+
+/* CATEGORIES */
+
+.categories {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 8px 4px 0;
+  color: #597445;
+}
+
+.categories h1 {
+  font-weight: 700;
+  font-size: 30px;
+}
+
+.category-list {
+  overflow-x: scroll;
+  white-space: nowrap;
+  scrollbar-width: none;
+}
+
+.category-list ion-row {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 8px;
+}
+
+.category-list ion-col {
+  border: 2px solid transparent;
+  border-radius: 15px;
+  color: #000000;
+  background: #ffffff;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  padding: 6px 15px;
+  font-size: 15px;
+  cursor: pointer;
+  transition: box-shadow 0.2s, background 0.2s;
+  white-space: nowrap;
+}
+
+.category-list ion-col:hover {
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.category-list ion-col.active {
+  background: #597445;
+  color: #ffffff;
+  font-weight: 600;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+}

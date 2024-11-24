@@ -1,7 +1,47 @@
-import React from 'react'
+import React from 'react';
+import { IonContent, IonCard, IonCardContent, IonRow, IonCol, IonButton, IonText } from '@ionic/react';
+import './list.css'; // Styling yang sudah kamu buat
+import { LucideSun, LucideMoon, LucideSunrise } from 'lucide-react';
 
 export default function CateringList() {
   return (
-    <div>CateringList</div>
-  )
+    <IonContent className="catering-container">
+      <IonCard className="catering-card">
+        <IonCardContent>
+          <div className="catering-card-inner">
+            {/* Gambar di kiri */}
+            <img
+              src="./src/components/CateringList/img/capjay.jpg"
+              alt="Catering Capjay Top"
+              className="catering-image"
+            />
+            {/* Konten di sebelah kanan */}
+            <div className="catering-content">
+              <div className="rating-container">
+                <span className="rating-icon">★</span>
+                <span>4.7</span>
+              </div>
+              <h2 className="catering-title">Catering Capjay Top</h2>
+              <p className="catering-price">Rp20.000 - Rp60.000</p>
+
+              <div className="delivery-schedule">
+                <h3 className="schedule-title">Jadwal Pengiriman</h3>
+                <ul>
+                  <li>
+                    <LucideSunrise size={16} /> 07.00 - 07.30
+                  </li>
+                  <li>
+                    <LucideSun size={16} /> 12.00 - 12.30
+                  </li>
+                  <li>
+                    <LucideMoon size={16} /> 18.00 - 18.30
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </IonCardContent>
+      </IonCard>
+    </IonContent>
+  );
 }
