@@ -4,28 +4,33 @@
     font-family: Arial, sans-serif;
     background-color: #f4f4f4;
     min-height: 100vh;
+    justify-content: flex-start; /* Card di sebelah kiri */
+    align-items: flex-start; /* Menyusun item dari atas */
+    width: 100%; /* Pastikan lebar container full */
+    margin-left: 0;
 }
 
 /* Card untuk setiap catering */
 .catering-card {
     display: flex;
     gap: 16px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
+    border: none; /* Hapus outline border */
+    border-radius: 8px; /* Tetap menjaga sudut melengkung */
     padding: 16px;
     background-color: #fff;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: none; /* Hapus shadow jika outline berasal dari efek shadow */
     align-items: flex-start;
-    /* position: relative; */
     margin-bottom: 16px;
+    justify-content: flex-start; 
+    margin-left: 0px;
 }
 
 
 /* Styling untuk gambar catering */
 .catering-image {
-    width: 100px;
-    height: 100px;
-    border-radius: 8px;
+    width: 120px;
+    height: 120px;
+    border-radius: 28px;
     object-fit: cover;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
 }
@@ -40,45 +45,48 @@
 
 /* Styling untuk judul catering */
 .catering-title {
-        font-weight: 700 !important;
-        font-size: 30px;
-    /* font-size: 1.5rem;
-    font-weight: 900; */
-    margin-bottom: 8px;
-    color: #000;
+    font-size: 1.1rem !important; /* Ukuran proporsional */
+    font-weight: bold !important; /* Teks tebal */
+    margin: 0 0 8px; /* Jarak bawah */
+    color: #000; /* Warna teks hitam */
+    white-space: nowrap;
 }
 
 
 /* Styling untuk harga catering */
 .catering-price {
-    font-size: 1rem;
-    color: #777;
-    margin-bottom: 16px;
+    font-size: 0.7rem !important; /* Ukuran sedang */
+    color: #777; /* Warna abu-abu */
+    margin: 0 0 10px; /* Jarak bawah */
 }
 
 /* Rating container di bawah tengah gambar */
 .rating-container {
     position: absolute;
-    top: 100px; /* Sesuaikan jarak dari atas gambar */
-    left: 23%;
+    top: 110px; /* Sesuaikan jarak dari atas gambar */
+    left: 24%; /* Pastikan ini sesuai layout */
     transform: translateX(-50%);
-    background-color: rgba(255, 255, 255, 0.8);
+    background-color: #fff;
     color: #333;
-    font-size: 1.2rem;
+    font-size: 1rem; /* Sedikit kecilkan font agar lebih proporsional */
     font-weight: bold;
-    padding: 5px px;
-    border-radius: 5px;
+    padding: 0px 12px; /* Sesuaikan padding (lebih lebar kiri-kanan) */
+    border-radius: 8px; /* Bulatkan sedikit sudut badge */
     z-index: 2;
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+    border: 1px solid #eaeaea;
+    display: flex; /* Gunakan flex untuk tata letak konten */
+    align-items: center;
+    gap: 3px; /* Jarak antara bintang dan angka rating */
 }
 
 
 /* Container untuk gambar dan konten dalam card */
 .catering-card-inner {
     display: flex; /* Mengatur gambar dan konten sejajar secara horizontal */
-    gap: 16px; /* Jarak antara gambar dan konten */
+    gap: 27px; /* Jarak antara gambar dan konten */
     width: 100%;
     align-items: flex-start; /* Memastikan konten berada di atas gambar */
+    justify-content: flex-start;
 }
 
 
@@ -92,11 +100,11 @@
 
 /* Styling untuk bagian jadwal pengiriman */
 .delivery-schedule {
-    margin-top: 16px;
+    margin-top: 10px;
 }
 
 .schedule-title {
-    font-size: 1rem;
+    font-size: 0.800rem !important;
     font-weight: bold;
     margin-bottom: 8px;
     color: #333;
@@ -114,16 +122,11 @@
     display: flex;
     align-items: center;
     gap: 8px;
-    font-size: 0.875rem;
-    margin-bottom: 8px;
+    font-size: 0.700rem ;
+    margin-bottom: 2px;
     color: #555;
 }
 
-/* Styling untuk icon jam */
-.delivery-schedule li svg {
-    color: #ff9f00;
-    font-size: 1.2rem;
-}
 
 /* Styling untuk button yang bisa ditambahkan */
 .catering-button {

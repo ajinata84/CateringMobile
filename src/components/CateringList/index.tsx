@@ -21,20 +21,20 @@ export default function CateringList() {
                 <span className="rating-icon">★</span>
                 <span>4.7</span>
               </div>
-              <h2 className="catering-title">Catering Capjay Top</h2>
-              <p className="catering-price">Rp20.000 - Rp60.000</p>
+              <h3 className="catering-title">Catering Capjay Top</h3>
+              <p className="catering-price"> Rp20.000 - Rp60.000</p>
 
               <div className="delivery-schedule">
                 <h3 className="schedule-title">Jadwal Pengiriman</h3>
                 <ul>
                   <li>
-                    <LucideSunrise size={16} /> 07.00 - 07.30
+                    <LucideSunrise size={13} color="#FFA500" /> 07.00 - 07.30
                   </li>
                   <li>
-                    <LucideSun size={16} /> 12.00 - 12.30
+                    <LucideSun size={13} color="#FFD700" /> 12.00 - 12.30
                   </li>
                   <li>
-                    <LucideMoon size={16} /> 18.00 - 18.30
+                    <LucideMoon size={13} color="#6A5ACD" /> 18.00 - 18.30
                   </li>
                 </ul>
               </div>
