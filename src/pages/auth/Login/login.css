@@ -18,17 +18,18 @@
   font-size: 30px;
   font-weight: bold;
   color: #2e7d32;
-  margin-bottom: 20px;
+  z-index: 1;
 }
 
 /* Tabs styling */
 .login-tabs {
   text-align: center;
   margin-bottom: 20px;
+  border-radius: 25px;
 }
 
 .tab-button {
-  border-radius: 20px;
+  border-radius: 25px;
 }
 
 .tab-button.active {
@@ -79,5 +80,7 @@
 .link {
   color: #2e7d32;
   font-weight: bold;
-  text-decoration: underline;
+  text-decoration: none;
+  font-size: 14px;
+  text-transform: capitalize;
 }
