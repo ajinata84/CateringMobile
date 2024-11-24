@@ -37,7 +37,7 @@ ion-grid {
   text-align: center;
   display: flex;
   align-items: center;
-  padding: 11px 8px;
+  padding: 6px 5px;
   font-size: 14px;
 }
 
@@ -58,7 +58,7 @@ ion-col .icon {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px 8px 0 0;
+  padding: 10px 8px 4px 0;
   color: #597445;
 }
 
@@ -67,9 +67,16 @@ ion-col .icon {
   font-size: 30px;
 }
 
+.category-list {
+  overflow-x: scroll;
+  white-space: nowrap;
+  scrollbar-width: none;
+}
+
 .category-list ion-row {
   display: flex;
-  gap: 3px;
+  flex-wrap: nowrap;
+  gap: 8px;
 }
 
 .category-list ion-col {
@@ -81,10 +88,11 @@ ion-col .icon {
   text-align: center;
   display: flex;
   justify-content: center;
-  padding: 6px 8px;
+  padding: 6px 15px;
   font-size: 15px;
   cursor: pointer;
   transition: box-shadow 0.2s, background 0.2s;
+  white-space: nowrap;
 }
 
 .category-list ion-col:hover {
