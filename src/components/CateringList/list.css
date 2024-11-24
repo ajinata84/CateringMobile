@@ -90,7 +90,7 @@ ion-card {
 .rating-container {
     position: absolute;
     top: 110px; /* Sesuaikan jarak dari atas gambar */
-    left: 20%; /* Pastikan ini sesuai layout */
+    left: 8%; /* Pastikan ini sesuai layout */
     transform: translateX(-50%);
     background-color: #fff;
     color: #333;
@@ -103,6 +103,7 @@ ion-card {
     display: flex; /* Gunakan flex untuk tata letak konten */
     align-items: center;
     gap: 3px; /* Jarak antara bintang dan angka rating */
+    transform: translate(0, 0);
 }
 
 
