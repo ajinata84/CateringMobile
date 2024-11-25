@@ -13,7 +13,7 @@ export default function Login() {
       <IonContent className="login-page">
         <div className="Layout flex flex-col justify-center items-center h-screen">
           <IonText color="dark">
-            <h1 className="login-title">Login</h1> 
+            <h1 className="login-title">Login</h1>
           </IonText>
           <IonCard className="login-card">
             <IonCardContent>
@@ -39,7 +39,7 @@ export default function Login() {
               <IonText color="medium" className="forgot-password">
                 Forgot Password?
               </IonText>
-              <IonButton expand="block" className="login-button" onClick={handleLogin}>
+              <IonButton expand="block" className="login-button" routerLink="/tabs/beranda" onClick={handleLogin}>
                 LOGIN
               </IonButton>
               <IonRow className="register-link">
