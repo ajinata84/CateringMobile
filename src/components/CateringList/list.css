@@ -1,7 +1,5 @@
 /* Styling untuk container utama */
 .catering-container {
-    /* padding: 16px; */
-    font-family: Arial, sans-serif;
     background-color: #f4f4f4;
     min-height: 100vh;
     width: 100%; /* Pastikan lebar container full */
@@ -20,20 +18,6 @@
     padding: none;
 }
 
-/* Reset semua gaya default IonCard */
-ion-card {
-    all: unset;
-    display: block;
-    background-color: transparent;
-  }
-  
-  /* Reset IonCardContent */
-  ion-card-content {
-    all: unset;
-    display: block;
-  }
-
-
 
   .catering-container ion-card {
     margin: 0 !important;
@@ -48,17 +32,25 @@ ion-card {
   }
 
 
+   .image-container {
+    position: relative;        
+    top: auto;
+    bottom: 0px;
+    width: 120px;
+    height: 120px;
+    border-radius: 28px; /* Pastikan sesuai desain */
+    overflow: visible; /* Menyembunyikan bagian badge yang melampaui gambar */
+}
+
+
 
 
 /* Styling untuk gambar catering */
 .catering-image {
-    width: 120px;
-    height: 120px;
-    flex-grow: 0;
-    border-radius: 28px;
-    object-fit: cover;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
-    float: left;
+    width: 100%; /* Gambar memenuhi kontainer */
+    height: 100%;
+    object-fit: cover; /* Gambar menyesuaikan ukuran */
+    border-radius: 28px; /* Tetap melengkung sesuai kontainer */
 }
 
 /* Container untuk konten di samping gambar */
@@ -72,7 +64,7 @@ ion-card {
 /* Styling untuk judul catering */
 .catering-title {
     font-size: 1rem !important; /* Ukuran proporsional */
-    font-weight: bold !important; /* Teks tebal */
+    font-weight: 700 !important; /* Teks tebal */
     margin: 0 0 8px; /* Jarak bawah */
     color: #000; /* Warna teks hitam */
     white-space: nowrap;
@@ -88,22 +80,21 @@ ion-card {
 
 /* Rating container di bawah tengah gambar */
 .rating-container {
-    position: absolute;
-    top: 110px; /* Sesuaikan jarak dari atas gambar */
-    left: 8%; /* Pastikan ini sesuai layout */
+    position: absolute; 
+    bottom: -10px; /* Jarak badge dari bawah gambar */
+    left: 50%;
     transform: translateX(-50%);
     background-color: #fff;
     color: #333;
-    font-size: 1rem; /* Sedikit kecilkan font agar lebih proporsional */
+    font-size: 1rem; /* Ukuran font tetap */
     font-weight: bold;
-    padding: 0px 12px; /* Sesuaikan padding (lebih lebar kiri-kanan) */
-    border-radius: 8px; /* Bulatkan sedikit sudut badge */
+    padding: 0px 12px; /* Padding dalam badge */
+    border-radius: 8px; /* Sudut melengkung */
     z-index: 2;
     border: 1px solid #eaeaea;
-    display: flex; /* Gunakan flex untuk tata letak konten */
+    display: flex; /* Untuk tata letak konten */
     align-items: center;
-    gap: 3px; /* Jarak antara bintang dan angka rating */
-    transform: translate(0, 0);
+    gap: 3px; /* Jarak antara ikon bintang dan angka */
 }
 
 
@@ -131,6 +122,7 @@ ion-card {
 }
 
 .schedule-title {
+    font-family: 'Inter', sans-serif;
     font-size: 0.800rem !important;
     font-weight: bold;
     margin-bottom: 8px;
@@ -139,35 +131,17 @@ ion-card {
 
 /* Styling untuk daftar jadwal pengiriman */
 .delivery-schedule ul {
-    list-style: none;
     padding: 0;
     margin: 0;
 }
 
 /* Styling untuk setiap jadwal pengiriman */
 .delivery-schedule li {
+    font-family: 'Inter', sans-serif;
     display: flex;
     align-items: center;
     gap: 8px;
     font-size: 0.700rem ;
     margin-bottom: 2px;
     color: #555;
-}
-
-
-/* Styling untuk button yang bisa ditambahkan */
-.catering-button {
-    margin-top: 16px;
-    background-color: #ff9f00;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-/* Efek saat tombol dihover */
-.catering-button:hover {
-    background-color: #e68900;
 }
