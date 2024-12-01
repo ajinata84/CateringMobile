@@ -47,6 +47,9 @@ import Register from "./pages/auth/Register";
 import Beranda from "./tabs/Beranda";
 import Aktivitas from "./tabs/Aktivitas";
 import Profil from "./tabs/Profil";
+import EditProfile from "./pages/EditProfile";
+import Cart from "./pages/purchase/Cart";
+import Confirmation from "./pages/purchase/Confirmation";
 
 setupIonicReact();
 
@@ -56,6 +59,12 @@ const App: React.FC = () => (
       <IonRouterOutlet>
         <Route exact path="/login" component={Login} />
         <Route exact path="/register" component={Register} />
+        
+        <Route exact path="/profile/edit-profile" component={EditProfile} />
+
+        <Route exact path="/purchase/cart" component={Cart} />
+        <Route exact path="/purchase/confirmation" component={Confirmation} />
+
 
         <Route path="/tabs">
           <IonTabs>
