@@ -6,10 +6,10 @@ import "./profil.css";
 
 export default function Profil() {
   return (
-    <IonPage>
+    <>
       <IonHeader>
         <IonToolbar color="primary">
-          <IonButton slot="start" routerLink="/tabs/beranda">
+          <IonButton routerLink="/tabs/beranda">
             <ArrowBigLeft />
           </IonButton>
           <IonTitle>Profile</IonTitle>
@@ -38,6 +38,6 @@ export default function Profil() {
           </div>
         </div>
       </IonContent>
-    </IonPage>
+    </>
   );
 }
