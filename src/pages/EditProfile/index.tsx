@@ -6,10 +6,10 @@ import "./editprofile.css";
 
 export default function EditProfile() {
   return (
-    <>
+    <IonPage>
       <IonHeader>
         <IonToolbar color="primary">
-          <IonButton routerLink="/tabs/profile">
+          <IonButton routerLink="/tabs/profil">
             <ArrowBigLeft />
           </IonButton>
           <IonTitle>Edit Profile</IonTitle>
@@ -38,6 +38,6 @@ export default function EditProfile() {
           </div>
         </div>
       </IonContent>
-    </>
+    </IonPage>
   );
 }

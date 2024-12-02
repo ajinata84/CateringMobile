@@ -1,147 +1,134 @@
 /* Styling untuk container utama */
 .catering-container {
-    background-color: #f4f4f4;
-    min-height: 100vh;
-    width: 100%; /* Pastikan lebar container full */
+  background-color: #f4f4f4;
+  min-height: 100vh;
+  width: 100%; /* Pastikan lebar container full */
 }
 
 /* Card untuk setiap catering */
 .catering-card {
-    border: none; /* Hapus outline border */
-    border-radius: 8px; /* Tetap menjaga sudut melengkung */
-    background-color: #fff;
-    box-shadow: none; /* Hapus shadow jika outline berasal dari efek shadow */
-    align-items: flex-start !important;
-    margin-bottom: 16px;
-    justify-content: flex-start !important; 
-    margin-left: 0px !important;
-    padding: none;
+  border: none; /* Hapus outline border */
+  border-radius: 8px; /* Tetap menjaga sudut melengkung */
+  background-color: #fff;
+  box-shadow: none; /* Hapus shadow jika outline berasal dari efek shadow */
+  align-items: flex-start !important;
+  margin-bottom: 16px;
+  justify-content: flex-start !important;
+  padding: none;
 }
 
-
-  .catering-container ion-card {
-    margin: 0 !important;
-    padding-bottom: 10px !important;
-    box-shadow: none !important;
-    background-color: transparent !important;
-  }
-  
-  .catering-container ion-card-content {
-    padding: 0 !important;
-    padding-top: 15px !important;
-  }
-
-
-   .image-container {
-    position: relative;        
-    top: auto;
-    bottom: 0px;
-    width: 120px;
-    height: 120px;
-    border-radius: 28px; /* Pastikan sesuai desain */
-    overflow: visible; /* Menyembunyikan bagian badge yang melampaui gambar */
+.catering-container ion-card {
+  box-shadow: none !important;
+  background-color: transparent !important;
 }
 
+.catering-container ion-card-content {
+  padding: 0 !important;
+}
 
-
+.image-container {
+  position: relative;
+  top: auto;
+  bottom: 0px;
+  width: 120px;
+  height: 120px;
+  border-radius: 28px; /* Pastikan sesuai desain */
+  overflow: visible; /* Menyembunyikan bagian badge yang melampaui gambar */
+}
 
 /* Styling untuk gambar catering */
 .catering-image {
-    width: 100%; /* Gambar memenuhi kontainer */
-    height: 100%;
-    object-fit: cover; /* Gambar menyesuaikan ukuran */
-    border-radius: 28px; /* Tetap melengkung sesuai kontainer */
+  width: 100%; /* Gambar memenuhi kontainer */
+  height: 100%;
+  object-fit: cover; /* Gambar menyesuaikan ukuran */
+  border-radius: 28px; /* Tetap melengkung sesuai kontainer */
 }
 
 /* Container untuk konten di samping gambar */
 .catering-content {
-    flex: 2;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
 }
 
 /* Styling untuk judul catering */
 .catering-title {
-    font-size: 1rem !important; /* Ukuran proporsional */
-    font-weight: 700 !important; /* Teks tebal */
-    margin: 0 0 8px; /* Jarak bawah */
-    color: #000; /* Warna teks hitam */
-    white-space: nowrap;
+  font-size: 1rem !important; /* Ukuran proporsional */
+  font-weight: 700 !important; /* Teks tebal */
+  margin: 0 0 8px; /* Jarak bawah */
+  color: #000; /* Warna teks hitam */
+  white-space: nowrap;
 }
-
 
 /* Styling untuk harga catering */
 .catering-price {
-    font-size: 0.7rem !important; /* Ukuran sedang */
-    color: #777; /* Warna abu-abu */
-    margin: 0 0 10px; /* Jarak bawah */
+  font-size: 0.7rem !important; /* Ukuran sedang */
+  color: #777; /* Warna abu-abu */
+  margin: 0 0 10px; /* Jarak bawah */
 }
 
 /* Rating container di bawah tengah gambar */
 .rating-container {
-    position: absolute; 
-    bottom: -10px; /* Jarak badge dari bawah gambar */
-    left: 50%;
-    transform: translateX(-50%);
-    background-color: #fff;
-    color: #333;
-    font-size: 1rem; /* Ukuran font tetap */
-    font-weight: bold;
-    padding: 0px 12px; /* Padding dalam badge */
-    border-radius: 8px; /* Sudut melengkung */
-    z-index: 2;
-    border: 1px solid #eaeaea;
-    display: flex; /* Untuk tata letak konten */
-    align-items: center;
-    gap: 3px; /* Jarak antara ikon bintang dan angka */
+  position: absolute;
+  bottom: -10px; /* Jarak badge dari bawah gambar */
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #fff;
+  color: #333;
+  font-size: 1rem; /* Ukuran font tetap */
+  font-weight: bold;
+  padding: 0px 12px; /* Padding dalam badge */
+  border-radius: 8px; /* Sudut melengkung */
+  z-index: 2;
+  border: 1px solid #eaeaea;
+  display: flex; /* Untuk tata letak konten */
+  align-items: center;
+  gap: 3px; /* Jarak antara ikon bintang dan angka */
 }
-
 
 /* Container untuk gambar dan konten dalam card */
 .catering-card-inner {
-    display: flex !important; /* Mengatur gambar dan konten sejajar secara horizontal */
-    gap: 27px; /* Jarak antara gambar dan konten */
-    width: 100%;
-    align-items: flex-start !important; /* Memastikan konten berada di atas gambar */
-    justify-content: flex-start !important;
+  display: flex !important; /* Mengatur gambar dan konten sejajar secara horizontal */
+  gap: 27px; /* Jarak antara gambar dan konten */
+  width: 100%;
+  align-items: flex-start !important; /* Memastikan konten berada di atas gambar */
+  justify-content: flex-start !important;
 }
-
-
 
 /* Styling untuk ikon bintang */
 .rating-icon {
-    color: #ff9f00;
-    font-size: 1.5rem;
-    margin-right: 5px;
+  color: #ff9f00;
+  font-size: 1.5rem;
+  margin-right: 5px;
 }
 
 /* Styling untuk bagian jadwal pengiriman */
 .delivery-schedule {
-    margin-top: 10px;
+  margin-top: 10px;
 }
 
 .schedule-title {
-    font-family: 'Inter', sans-serif;
-    font-size: 0.800rem !important;
-    font-weight: bold;
-    margin-bottom: 8px;
-    color: #333;
+  font-family: "Inter", sans-serif;
+  font-size: 0.8rem !important;
+  font-weight: bold;
+  margin-bottom: 8px;
+  color: #333;
 }
 
 /* Styling untuk daftar jadwal pengiriman */
 .delivery-schedule ul {
-    padding: 0;
-    margin: 0;
+  padding: 0;
+  margin: 0;
 }
 
 /* Styling untuk setiap jadwal pengiriman */
 .delivery-schedule li {
-    font-family: 'Inter', sans-serif;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 0.700rem ;
-    margin-bottom: 2px;
-    color: #555;
+  font-family: "Inter", sans-serif;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.7rem;
+  margin-bottom: 2px;
+  color: #555;
 }

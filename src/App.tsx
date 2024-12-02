@@ -50,54 +50,35 @@ import Profil from "./tabs/Profil";
 import EditProfile from "./pages/EditProfile";
 import Cart from "./pages/purchase/Cart";
 import Confirmation from "./pages/purchase/Confirmation";
+import TabBar from "./components/TabBar";
 
 setupIonicReact();
 
 const App: React.FC = () => (
   <IonApp>
     <IonReactRouter>
-      <IonRouterOutlet>
-        <Route exact path="/login" component={Login} />
-        <Route exact path="/register" component={Register} />
-        
-        <Route exact path="/profile/edit-profile" component={EditProfile} />
+      <IonTabs>
+        <IonRouterOutlet>
+          <Route exact path="/login" component={Login} />
+          <Route exact path="/register" component={Register} />
+          <Route exact path="/profile/edit-profile" component={EditProfile} />
+          <Route exact path="/purchase/cart" component={Cart} />
+          <Route exact path="/purchase/confirmation" component={Confirmation} />
 
-        <Route exact path="/purchase/cart" component={Cart} />
-        <Route exact path="/purchase/confirmation" component={Confirmation} />
+          <Route exact path="/tabs/beranda" component={Beranda} />
+          <Route exact path="/tabs/aktivitas" component={Aktivitas} />
+          <Route exact path="/tabs/profil" component={Profil} />
+          <Route exact path="/tabs">
+            <Redirect to="/tabs/beranda" />
+          </Route>
 
+          <Route exact path="/">
+            <Redirect to="/tabs" />
+          </Route>
+        </IonRouterOutlet>
 
-        <Route path="/tabs">
-          <IonTabs>
-            <IonRouterOutlet>
-              <Route exact path="/tabs/beranda" component={Beranda} />
-              <Route exact path="/tabs/aktivitas" component={Aktivitas} />
-              <Route exact path="/tabs/profil" component={Profil} />
-              <Route exact path="/tabs">
-                <Redirect to="/tabs/beranda" />
-              </Route>
-            </IonRouterOutlet>
-
-            <IonTabBar slot="bottom">
-              <IonTabButton tab="beranda" href="/tabs/beranda">
-                <IonIcon icon={home} />
-                <IonLabel>Beranda</IonLabel>
-              </IonTabButton>
-              <IonTabButton tab="aktivitas" href="/tabs/aktivitas">
-                <IonIcon icon={newspaperOutline} />
-                <IonLabel>Aktivitas</IonLabel>
-              </IonTabButton>
-              <IonTabButton tab="profil" href="/tabs/profil">
-                <IonIcon icon={personCircleOutline} />
-                <IonLabel>Profil</IonLabel>
-              </IonTabButton>
-            </IonTabBar>
-          </IonTabs>
-        </Route>
-
-        <Route exact path="/">
-          <Redirect to="/tabs" />
-        </Route>
-      </IonRouterOutlet>
+        <TabBar />
+      </IonTabs>
     </IonReactRouter>
   </IonApp>
 );

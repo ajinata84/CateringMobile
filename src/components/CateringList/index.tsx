@@ -6,8 +6,8 @@ import { LucideSun, LucideMoon, LucideSunrise } from 'lucide-react';
 export default function CateringList() {
   return (
     <IonContent className="catering-container">
-      <IonCard className="catering-card">
-        <IonCardContent>
+      <IonCard className="catering-card !m-0">
+        <IonCardContent className='!p-0'>
           <div className="catering-card-inner">
             {/* Gambar di kiri */}
             <div className="image-container">

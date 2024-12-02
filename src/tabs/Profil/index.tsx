@@ -1,12 +1,12 @@
 import React from "react";
-import { IonHeader, IonToolbar, IonTitle, IonContent, IonIcon, IonButton, IonToggle, IonItem, IonLabel, IonList } from "@ionic/react";
+import { IonHeader, IonToolbar, IonTitle, IonContent, IonIcon, IonButton, IonToggle, IonItem, IonLabel, IonList, IonPage } from "@ionic/react";
 import { logOutOutline, storefrontOutline, helpCircleOutline, notificationsOutline, lockClosedOutline, keyOutline } from "ionicons/icons";
 import "./profil.css";
 import { ArrowBigLeft } from "lucide-react";
 
 export default function Profil() {
   return (
-    <>
+    <IonPage>
       <IonHeader>
         <IonToolbar color="primary">
           <IonButton routerLink="/tabs/beranda">
@@ -67,6 +67,6 @@ export default function Profil() {
           Logout
         </IonButton>
       </IonContent>
-    </>
+    </IonPage>
   );
 }
