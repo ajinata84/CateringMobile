@@ -9,10 +9,10 @@ export default function EditProfile() {
     <>
       <IonHeader>
         <IonToolbar color="primary">
-          <IonButton routerLink="/tabs/beranda">
+          <IonButton routerLink="/tabs/profile">
             <ArrowBigLeft />
           </IonButton>
-          <IonTitle>Profile</IonTitle>
+          <IonTitle>Edit Profile</IonTitle>
         </IonToolbar>
       </IonHeader>
       <IonContent>
