@@ -1,5 +1,5 @@
 import React from "react";
-import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent, IonIcon, IonButton } from "@ionic/react";
+import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent, IonIcon, IonButton, IonItem, IonLabel, IonInput } from "@ionic/react";
 import { mailOutline, callOutline, locationOutline } from "ionicons/icons";
 import { ArrowBigLeft } from "lucide-react";
 import "./editprofile.css";
@@ -16,26 +16,33 @@ export default function EditProfile() {
         </IonToolbar>
       </IonHeader>
       <IonContent>
-        <div className="profile-header">
-          <div className="profile-image"></div>
-          <h2 className="profile-name">Budi Siregar</h2>
-        </div>
-        <div className="profile-info">
-          <div className="info-item">
-            <IonIcon icon={mailOutline} className="icon" />
-            <span>Email</span>
-            <p>Budi123@gmail.com</p>
+        <div className="edit-profile-container">
+          <div className="profile-header">
+            <div className="profile-image"></div>
+            <h2 className="profile-name">Edit Profile</h2>
           </div>
-          <div className="info-item">
-            <IonIcon icon={callOutline} className="icon" />
-            <span>Phone</span>
-            <p>+628222111333</p>
-          </div>
-          <div className="info-item">
-            <IonIcon icon={locationOutline} className="icon" />
-            <span>Address</span>
-            <p>Malang</p>
-          </div>
+
+          {/* Form untuk mengedit data */}
+          <form onSubmit={(e) => e.preventDefault()}>
+            <IonItem>
+              <IonLabel position="stacked">Email</IonLabel>
+              <IonInput type="email" placeholder="Enter your email" />
+            </IonItem>
+
+            <IonItem>
+              <IonLabel position="stacked">Phone</IonLabel>
+              <IonInput type="tel" placeholder="Enter your phone number" />
+            </IonItem>
+
+            <IonItem>
+              <IonLabel position="stacked">Address</IonLabel>
+              <IonInput type="text" placeholder="Enter your address" />
+            </IonItem>
+
+            <IonButton expand="block" color="primary" style={{ marginTop: "20px" }}>
+              Save Changes
+            </IonButton>
+          </form>
         </div>
       </IonContent>
     </IonPage>
