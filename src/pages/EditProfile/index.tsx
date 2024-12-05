@@ -1,7 +1,7 @@
 import React from "react";
 import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent, IonIcon, IonButton, IonItem, IonLabel, IonInput } from "@ionic/react";
 import { mailOutline, callOutline, locationOutline } from "ionicons/icons";
-import { ArrowBigLeft } from "lucide-react";
+import { ArrowBigLeft, ChevronLeft } from "lucide-react";
 import "./editprofile.css";
 
 export default function EditProfile() {
@@ -10,7 +10,7 @@ export default function EditProfile() {
       <IonHeader>
         <IonToolbar color="primary">
           <IonButton routerLink="/tabs/profil">
-            <ArrowBigLeft />
+            <ChevronLeft />
           </IonButton>
           <IonTitle>Edit Profile</IonTitle>
         </IonToolbar>
