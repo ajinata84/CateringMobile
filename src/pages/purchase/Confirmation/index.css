@@ -1,9 +1,11 @@
 .back-confirm {
   display: flex;
   padding: 20px 0 20px 25px;
+  align-items: center;
 }
 
 .back-confirm p {
+  font-size: 16px;
   padding-left: 15px;
 }
 
@@ -15,11 +17,47 @@
   width: 100%;
 }
 
+/* ALAMAT */
+.delivery {
+  border-radius: 16px;
+  background-color: white;
+  padding: 18px 21px;
+  margin: 0 20px 10px 20px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.delivery .title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  align-content: center;
+}
+
+.delivery .title h1 {
+  font-weight: 700;
+  font-size: 16px;
+  margin-bottom: 6px;
+  /* color: #1c4934; */
+}
+
+.delivery .title p {
+  font-size: 14px;
+  color: #9f9f9f;
+}
+
+.delivery .detail p {
+  font-size: 13px;
+}
+
+.delivery-info {
+  margin: 0 0 15px 0;
+}
+
 .delivery-content {
   display: flex;
   align-items: center;
   gap: 12px;
-  margin: 0 6px;
+  padding: 0 20px 0 0;
 }
 
 .delivery-content p {
@@ -30,22 +68,34 @@
 .delivery-content .highlight {
   font-weight: bold;
 }
+.delivery-content .change {
+  margin-left: 2px;
+  color: #333;
+}
 
 /* LIST MENU */
 .confirmation {
-  padding: 0 20px 20px 20px;
+  padding: 0 20px 6px 20px;
 }
 
 .confirmation h1 {
   font-weight: 700;
-  font-size: 18px;
-  margin-top: 25px;
+  font-size: 17px;
+  margin-top: 20px;
 }
 
 .list-menu {
   display: flex;
   border-bottom: 1px solid #d1d1d1;
   padding: 14px 9px;
+}
+
+.menu-order {
+  margin-bottom: 15px;
+}
+
+.border {
+  border-bottom: 1px solid #d1d1d1;
 }
 
 .list-menu img {
@@ -103,13 +153,30 @@
   box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
 }
 
+.total-payment {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  align-content: center;
+  margin: 0 8px 15px 8px;
+}
+
+.total-payment h1 {
+  font-weight: 400;
+  font-size: 18px;
+}
+
+.total-payment p {
+  font-weight: 700;
+  font-size: 18px;
+}
+
 .btn-order {
   width: 100%;
   background-color: #597445;
   color: white;
-  border-radius: 15px;
-  padding: 15px;
-  margin-bottom: 13px;
-  font-size: 18px;
+  border-radius: 20px;
+  padding: 10px;
+  font-size: 16px;
   cursor: pointer;
 }
