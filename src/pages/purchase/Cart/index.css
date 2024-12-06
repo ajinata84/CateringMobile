@@ -1,0 +1,135 @@
+/* Mengubah ukuran font untuk IonTitle */
+.custom-title {
+  font-size: 24px; /* Ukuran font lebih kecil */
+}
+
+/* Warna hijau kustom */
+.bg-custom-green {
+  background-color: #597445;
+}
+
+.text-custom-green {
+  color: black;
+}
+
+.border-custom-green {
+  border-color: #597445;
+}
+
+.hover-bg-custom-green:hover {
+  background-color: #466033;
+}
+
+.custom-confirm-button {
+  border-radius: 25px !important;
+  margin-bottom: 25px !important;
+  width: 80%;
+  margin: 0 auto;
+  background-color: #597445;
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.custom-confirm-button:hover {
+  background-color: #466033;
+}
+
+/* Tombol Bulat untuk Plus dan Minus */
+button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+}
+
+button:hover {
+  background-color: #e2e2e2;
+}
+
+/* Detail Harian/Mingguan di bawah harga */
+.text-sm.mt-2 {
+  margin-top: 5px;
+}
+
+h2.text-base {
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+
+/* Ukuran font untuk Harga */
+p.text-sm {
+  font-size: 13px; /* Mengatur ukuran font harga */
+}
+
+/* Membuat checkmark menjadi putih */
+.checkmark {
+  color: white;
+  font-size: 16px; /* Ukuran checkmark */
+  flex: 0 0 auto;
+}
+
+/* CSS untuk memperbesar tanda "<" */
+.back-icon {
+  font-size: 25px; /* Sesuaikan ukuran yang diinginkan */
+  font-weight: bold; /* Bisa menambahkan ketebalan jika diinginkan */
+  color: #000; /* Menyesuaikan warna, bisa diganti dengan warna sesuai kebutuhan */
+}
+
+/* Mengubah ukuran dan peletakan tombol quantity */
+button.h-6.w-6 {
+  font-size: 16px;
+  padding: 4px;
+  margin-top: 50px;
+  flex: 0 0 auto;
+}
+
+span.font-semibold {
+  font-size: 14px;
+  margin-top: 50px;
+}
+
+
+.footer-container {
+  display: flex;
+  justify-content: space-between; /* Bagi ruang di antara elemen */
+  align-items: center; /* Pastikan vertikalnya sejajar */
+  padding: 16px; /* Sesuaikan padding */
+  background-color: white; /* Warna latar belakang */
+}
+
+.footer-label {
+  font-size: 16px; /* Ukuran font "Total:" */
+  font-weight: 600; /* Font tebal */
+  margin: 0; /* Hilangkan margin jika ada */
+}
+
+.footer-total {
+  font-size: 16px; /* Ukuran font total harga */
+  font-weight: bold; /* Font lebih tebal untuk harga */
+  color: black; /* Warna hijau sesuai dengan desain */
+  margin: 0; /* Hilangkan margin */
+}
+
+
+
+/* Untuk kontainer utama setiap item di dalam cart */
+.cart-item {
+  display: flex; /* Flexbox untuk tata letak */
+  align-items: center; /* Vertikal sejajar */
+  gap: 16px; /* Jarak antar elemen */
+  margin-left: 10px;
+}
+
+/* Kontainer nama catering */
+.catering-name {
+  flex-grow: 1; /* Ambil ruang fleksibel */
+ 
+  overflow: hidden; /* Sembunyikan teks berlebih */
+  font-size: 14px;
+}
+
+/* Elemen tetap (contoh: checkbox, tombol, dll.) */
+.fixed-element {
+  flex-shrink: 0; /* Jangan mengecil atau berubah ukuran */
+}
