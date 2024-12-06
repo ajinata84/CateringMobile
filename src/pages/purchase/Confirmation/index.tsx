@@ -12,18 +12,34 @@ export default function Confirmation() {
           <p>Konfirmasi order</p>
         </div>
 
-        <div className="delivery-info">
+        {/* <div className="delivery-info">
           <div className="delivery-content">
             <Bike />
             <p>
-              Pesanan anda akan sampai dalam{" "}
-              <span className="highlight">30 menit!</span>
+              Pesanan anda akan diantar pada{" "}
+              <span className="highlight">12 Desember, jam 05:00! </span>
+              <u className="change">Ganti waktu pengiriman</u>
             </p>
+          </div>
+        </div> */}
+
+        <div className="alamat-pengiriman">
+          <div className="delivery">
+            <div className="title">
+              <h1>Alamat pengiriman</h1>
+              <p>Ubah</p>
+            </div>
+
+            <div className="detail">
+              <p>Jalan Anggrek No.123</p>
+              <p>Kelurahan Mentari, Kecamatan Blimbing</p>
+              <p>Malang 12345</p>
+            </div>
           </div>
         </div>
 
         <div className="confirmation">
-          <h1>Menu pilihan Anda</h1>
+          {/* <h1>Menu pilihan Anda</h1> */}
           <div className="menu-order">
             <div className="list-menu">
               <img src=".\src\pages\purchase\Confirmation\img\Konrobakar.jpg" />
@@ -32,6 +48,8 @@ export default function Confirmation() {
                 <h3>Rp40.000</h3>
               </div>
             </div>
+            {/* <div className="border"></div> */}
+
             <div className="list-menu">
               <img src=".\src\pages\purchase\Confirmation\img\Konrobakar.jpg" />
               <div className="detail-menu">
@@ -40,7 +58,22 @@ export default function Confirmation() {
               </div>
             </div>
           </div>
+        </div>
 
+        <div className="jadwal-pengiriman">
+          <div className="delivery">
+            <div className="title">
+              <h1>Jadwal pengiriman</h1>
+              <p>Ubah</p>
+            </div>
+
+            <div className="detail">
+              <p>10/12/2024 01:00</p>
+            </div>
+          </div>
+        </div>
+
+        <div className="confirmation">
           <h1>Detail pembayaran</h1>
           <div className="payment-detail">
             <div className="payment-row">
@@ -55,17 +88,21 @@ export default function Confirmation() {
               <p>Biaya pengiriman</p>
               <p className="harga">Rp15.000</p>
             </div>
-            <div className="payment-row">
+            {/* <div className="payment-row">
               <p>Total pembayaran</p>
               <p className="harga">Rp130.000</p>
-            </div>
+            </div> */}
           </div>
         </div>
+      </div>
 
-        <div className="order-container">
-          <div className="order-button">
-            <button className="btn-order">Order</button>
+      <div className="order-container">
+        <div className="order-button">
+          <div className="total-payment">
+            <h1>Total tagihan</h1>
+            <p>Rp130.0000</p>
           </div>
+          <button className="btn-order">Pesan sekarang</button>
         </div>
       </div>
     </IonPage>

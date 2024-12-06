@@ -7,14 +7,6 @@ import { ArrowBigLeft } from "lucide-react";
 export default function Profil() {
   return (
     <IonPage>
-      <IonHeader>
-        <IonToolbar color="primary">
-          <IonButton routerLink="/tabs/beranda">
-            <ArrowBigLeft />
-          </IonButton>
-          <IonTitle>Profile</IonTitle>
-        </IonToolbar>
-      </IonHeader>
       <IonContent>
         <div className="profile-container">
           <div className="profile-avatar">
