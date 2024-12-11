@@ -7,6 +7,23 @@
   border-bottom-right-radius: 20px;
 }
 
+.editprofile-card {
+  display: flex;
+  justify-items: center;
+  justify-content: center;
+  justify-self: center;
+  width: 90%;
+  max-width: 400px;
+  border-radius: 30px;
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+  max-height: 500px;
+}
+
+ion-title {
+  margin-left: 1px; /* Tambahkan jarak antara arrow dan teks */
+}
+
 .profile-image {
   width: 100px;
   height: 100px;
@@ -64,4 +81,17 @@
 .tab-bar ion-icon {
   color: white;
   font-size: 1.5rem;
+}
+
+.rounded-button {
+  border-radius: 30px !important;
+}
+
+/* Login button */
+.save-button {
+  --border-radius: 20px;
+  --background-color: #2e7d32;
+  font-size: 16px;
+  font-weight: bold;
+  color: white;
 }
