@@ -1,20 +1,23 @@
 /* Styling untuk container utama */
-.catering-container {
-  background-color: #f4f4f4;
-  min-height: 100vh;
-  width: 100%; /* Pastikan lebar container full */
+ion-card,
+ion-card-content,
+ion-content {
+  overflow: visible !important;
+  position: relative !important;
+  z-index: 1;
 }
 
-/* Card untuk setiap catering */
 .catering-card {
-  border: none; /* Hapus outline border */
-  border-radius: 8px; /* Tetap menjaga sudut melengkung */
-  background-color: #fff;
-  box-shadow: none; /* Hapus shadow jika outline berasal dari efek shadow */
+  position: relative;
+  border: none;
+  border-radius: 8px;
+  box-shadow: none;
   align-items: flex-start !important;
-  margin-bottom: 16px;
   justify-content: flex-start !important;
   padding: none;
+  overflow: visible !important;
+  margin: 0;
+  padding-bottom: 30px;
 }
 
 .catering-container ion-card {
@@ -24,16 +27,15 @@
 
 .catering-container ion-card-content {
   padding: 0 !important;
+  overflow: visible;
 }
 
 .image-container {
   position: relative;
-  top: auto;
-  bottom: 0px;
   width: 120px;
   height: 120px;
-  border-radius: 28px; /* Pastikan sesuai desain */
-  overflow: visible; /* Menyembunyikan bagian badge yang melampaui gambar */
+  border-radius: 28px;
+  overflow: visible !important;
 }
 
 /* Styling untuk gambar catering */
@@ -71,7 +73,7 @@
 /* Rating container di bawah tengah gambar */
 .rating-container {
   position: absolute;
-  bottom: -10px; /* Jarak badge dari bawah gambar */
+  bottom: -15px; /* Jarak badge dari bawah gambar */
   left: 50%;
   transform: translateX(-50%);
   background-color: #fff;
@@ -89,11 +91,13 @@
 
 /* Container untuk gambar dan konten dalam card */
 .catering-card-inner {
-  display: flex !important; /* Mengatur gambar dan konten sejajar secara horizontal */
-  gap: 27px; /* Jarak antara gambar dan konten */
+  position: relative;
+  display: flex !important;
+  gap: 27px;
   width: 100%;
-  align-items: flex-start !important; /* Memastikan konten berada di atas gambar */
+  align-items: flex-start !important;
   justify-content: flex-start !important;
+  overflow: visible !important;
 }
 
 /* Styling untuk ikon bintang */
@@ -132,3 +136,5 @@
   margin-bottom: 2px;
   color: #555;
 }
+
+/* Force IonCard and IonCardContent to respect overflow */

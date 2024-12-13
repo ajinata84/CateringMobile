@@ -1,17 +1,23 @@
 import React, { useState } from "react";
 import "./index.css";
-import { IonHeader, IonSearchbar, IonTitle, IonToolbar } from "@ionic/react";
+import { IonHeader, IonSearchbar, IonTitle, IonToolbar, useIonRouter } from "@ionic/react";
 import { IonCol, IonGrid, IonRow } from "@ionic/react";
 import { History, ListFilter, MapPin } from "lucide-react";
 
 export default function SrachFilters() {
+  const router = useIonRouter();
+
   const [activeCategory, setActiveCategory] = useState("Harian"); // Default buat category
   const categories = ["Harian", "Kantoran", "Pernikahan", "Acara"]; // List category
 
+  const goToSearch = () => {
+    router.push('/search/test', 'root', 'push');
+  };
+
   return (
-    <div>
+    <div className="mb-4">
       <div className="search-bar">
-        <IonSearchbar value="" class="custom"></IonSearchbar>
+        <IonSearchbar value="" class="custom" onClick={goToSearch}></IonSearchbar>
       </div>
 
       <div className="location-history">

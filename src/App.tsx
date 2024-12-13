@@ -40,8 +40,7 @@ import "@ionic/react/css/display.css";
 // import '@ionic/react/css/palettes/dark.system.css';
 
 /* Theme variables */
-import "./theme/variables.css";
-import "./theme/globals.css";
+
 import Login from "./pages/auth/Login";
 import Register from "./pages/auth/Register";
 import Beranda from "./tabs/Beranda";
@@ -51,6 +50,10 @@ import EditProfile from "./pages/EditProfile";
 import Cart from "./pages/purchase/Cart";
 import Confirmation from "./pages/purchase/Confirmation";
 import TabBar from "./components/TabBar";
+import Search from "./pages/search";
+
+import "./theme/variables.css";
+import "./theme/globals.css";
 
 setupIonicReact();
 
@@ -61,6 +64,9 @@ const App: React.FC = () => (
         <IonRouterOutlet>
           <Route exact path="/login" component={Login} />
           <Route exact path="/register" component={Register} />
+
+          <Route exact path="/search/:params" component={Search} />
+
           <Route exact path="/profile/edit-profile" component={EditProfile} />
           <Route exact path="/purchase/cart" component={Cart} />
           <Route exact path="/purchase/confirmation" component={Confirmation} />
