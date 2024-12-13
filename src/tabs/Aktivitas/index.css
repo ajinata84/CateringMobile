@@ -1,0 +1,102 @@
+.back-confirm {
+  display: flex;
+  padding: 20px 0 20px 25px;
+  align-items: center;
+}
+
+.back-confirm p {
+  font-size: 16px;
+  padding-left: 15px;
+}
+
+.tab-container {
+  display: flex;
+  background-color: #ffffff;
+  color: #333;
+  box-shadow: -4px 3px 8px rgba(0, 0, 0, 0.15);
+  font-size: 14px;
+  margin-bottom: 25px;
+}
+
+.tab {
+  flex: 1;
+  text-align: center;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.tab.active {
+  font-weight: 600;
+  border-bottom: 4px solid #597445;
+  background-color: white;
+  box-shadow: 2px 9px 8px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* CARD TITLE */
+
+.list-card {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.card {
+  border-radius: 16px;
+  background-color: white;
+  padding: 18px 21px;
+  margin: 10px 20px 10px 20px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  transition: box-shadow 0.3s ease;
+}
+
+.card:hover {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
+}
+
+.card .title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  align-content: center;
+}
+
+.list-card .card .title h1 {
+  font-weight: 700;
+  font-size: 17px;
+  margin-bottom: 6px;
+  /* color: #1c4934; */
+}
+
+.list-card .card .title p {
+  font-size: 13px;
+  color: #000;
+  font-weight: 300;
+}
+
+/* CARD DETAIL */
+
+.card-detail {
+  color: #333;
+  padding: 2px 0;
+  font-size: 13px;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 0;
+  font-weight: 300;
+}
+
+.row .information {
+  color: #000;
+  font-weight: 400;
+}
+
+.content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 17px;
+}

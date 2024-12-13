@@ -9,6 +9,61 @@
   padding-left: 15px;
 }
 
+.tab-container {
+  display: flex;
+  background-color: #ffffff;
+  color: #333;
+  box-shadow: -4px 3px 8px rgba(0, 0, 0, 0.15);
+  font-size: 14px;
+}
+
+.tab {
+  flex: 1;
+  text-align: center;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.tab.active {
+  font-weight: 600;
+  border-bottom: 4px solid #597445;
+  background-color: white;
+  box-shadow: 2px 9px 8px 4px rgba(0, 0, 0, 0.1);
+}
+
+.content {
+  padding: 20px;
+}
+
+.transaction-card {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 15px;
+  margin: 10px 0;
+  background-color: #f9f9f9;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.transaction-card h3 {
+  margin: 0;
+  font-size: 18px;
+}
+
+.transaction-card p {
+  margin: 5px 0;
+  font-size: 14px;
+}
+.back-confirm {
+  display: flex;
+  padding: 20px 0 20px 25px;
+  align-items: center;
+}
+
+.back-confirm p {
+  font-size: 16px;
+  padding-left: 15px;
+}
+
 .delivery-info {
   background: linear-gradient(to right, #83ab65, rgba(253, 255, 253, 0.278));
   padding: 15px;
@@ -18,7 +73,7 @@
 }
 
 /* ALAMAT */
-.delivery {
+.card {
   border-radius: 16px;
   background-color: white;
   padding: 18px 21px;
@@ -26,26 +81,26 @@
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-.delivery .title {
+.card .title {
   display: flex;
   justify-content: space-between;
   align-items: center;
   align-content: center;
 }
 
-.delivery .title h1 {
+.card .title h1 {
   font-weight: 700;
   font-size: 16px;
   margin-bottom: 6px;
   /* color: #1c4934; */
 }
 
-.delivery .title p {
+.card .title p {
   font-size: 14px;
   color: #9f9f9f;
 }
 
-.delivery .detail p {
+.card .detail p {
   font-size: 13px;
 }
 

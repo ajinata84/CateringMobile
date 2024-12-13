@@ -12,19 +12,8 @@ export default function Confirmation() {
           <p>Konfirmasi order</p>
         </div>
 
-        {/* <div className="delivery-info">
-          <div className="delivery-content">
-            <Bike />
-            <p>
-              Pesanan anda akan diantar pada{" "}
-              <span className="highlight">12 Desember, jam 05:00! </span>
-              <u className="change">Ganti waktu pengiriman</u>
-            </p>
-          </div>
-        </div> */}
-
         <div className="alamat-pengiriman">
-          <div className="delivery">
+          <div className="card">
             <div className="title">
               <h1>Alamat pengiriman</h1>
               <p>Ubah</p>
@@ -61,7 +50,7 @@ export default function Confirmation() {
         </div>
 
         <div className="jadwal-pengiriman">
-          <div className="delivery">
+          <div className="card">
             <div className="title">
               <h1>Jadwal pengiriman</h1>
               <p>Ubah</p>
@@ -88,10 +77,6 @@ export default function Confirmation() {
               <p>Biaya pengiriman</p>
               <p className="harga">Rp15.000</p>
             </div>
-            {/* <div className="payment-row">
-              <p>Total pembayaran</p>
-              <p className="harga">Rp130.000</p>
-            </div> */}
           </div>
         </div>
       </div>
