@@ -13,23 +13,22 @@
   display: flex;
   background-color: #ffffff;
   color: #333;
-  box-shadow: -4px 3px 8px rgba(0, 0, 0, 0.15);
   font-size: 14px;
   margin-bottom: 25px;
 }
 
-.tab {
+.tab-container .tab {
   flex: 1;
   text-align: center;
   padding: 10px;
   cursor: pointer;
 }
 
-.tab.active {
+.tab-container .tab.active {
   font-weight: 600;
   border-bottom: 4px solid #597445;
   background-color: white;
-  box-shadow: 2px 9px 8px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0);
 }
 
 /* CARD TITLE */
