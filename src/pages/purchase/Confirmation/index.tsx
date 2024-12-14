@@ -37,7 +37,6 @@ export default function Confirmation() {
                 <h3>Rp40.000</h3>
               </div>
             </div>
-            {/* <div className="border"></div> */}
 
             <div className="list-menu">
               <img src=".\src\pages\purchase\Confirmation\img\Konrobakar.jpg" />

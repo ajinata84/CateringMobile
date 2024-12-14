@@ -16,7 +16,6 @@ export default function Aktivitas() {
     <IonPage>
       <div>
         <div className="back-confirm">
-          <ChevronLeft />
           <p>List Transaksi</p>
         </div>
 
