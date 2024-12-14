@@ -14,7 +14,7 @@ export default function Search() {
   const [activeCategory, setActiveCategory] = useState("Harian"); // Default buat category
   const categories = ["Harian", "Kantoran", "Pernikahan", "Acara"]; // List category
   return (
-    <IonPage >
+    <IonPage>
       <IonContent>
         <div className="search-container p-8">
           <div className="search-bar">

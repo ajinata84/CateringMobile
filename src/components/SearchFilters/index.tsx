@@ -11,7 +11,7 @@ export default function SrachFilters() {
   const categories = ["Harian", "Kantoran", "Pernikahan", "Acara"]; // List category
 
   const goToSearch = () => {
-    router.push('/search/test', 'root', 'push');
+    router.push('/search/test', 'forward', 'push');
   };
 
   return (

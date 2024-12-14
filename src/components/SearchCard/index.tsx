@@ -1,5 +1,4 @@
 import { ChevronRight, Star } from "lucide-react";
-import React from "react";
 import FoodCardSmall from "../FoodCardSmall";
 import TagChip from "../TagChip";
 import { useIonRouter } from "@ionic/react";
@@ -7,11 +6,13 @@ import { useIonRouter } from "@ionic/react";
 export default function SearchCard() {
   const router = useIonRouter();
 
-  const goToSearch = () => {
-    router.push("/search/test", "root", "push");
-  };
   return (
-    <div className="w-full  outline outline-1 outline-[#D5D5D5]">
+    <div
+      className="w-full  outline outline-1 outline-[#D5D5D5] active:bg-gray-100 transition-colors"
+      onClick={() => {
+        router.push("/catering/cateringid", "forward", "push");
+      }}
+    >
       <div className="flex flex-row items-center justify-between p-8 pb-0">
         <h1 className="font-semibold text-2xl">Catering Ikan Nila</h1>
         <ChevronRight />

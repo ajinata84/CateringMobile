@@ -54,6 +54,8 @@ import Search from "./pages/search";
 
 import "./theme/variables.css";
 import "./theme/globals.css";
+import Catering from "./pages/catering";
+import PaketView from "./pages/paketview";
 
 setupIonicReact();
 
@@ -66,6 +68,8 @@ const App: React.FC = () => (
           <Route exact path="/register" component={Register} />
 
           <Route exact path="/search/:params" component={Search} />
+          <Route exact path="/catering/:cateringid" component={Catering} />
+          <Route exact path="/catering/:cateringid/paket/:paketid" component={PaketView} />
 
           <Route exact path="/profile/edit-profile" component={EditProfile} />
           <Route exact path="/purchase/cart" component={Cart} />
