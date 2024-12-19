@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent, IonFooter, IonButton, IonIcon } from "@ionic/react";
 import { addOutline, removeOutline } from "ionicons/icons"; // Import icon yang digunakan
 import './index.css'; // File CSS tetap digunakan
+import { ChevronLeft } from "lucide-react";
 
 const CartCatering = () => {
   const [cartItems, setCartItems] = useState([
@@ -42,15 +43,10 @@ const CartCatering = () => {
   return (
     <IonPage>
       {/* Header */}
-      <IonHeader>
-        <IonToolbar color="light">
-          <IonButton slot="start" fill="clear">
-            {/* Tombol back "<" */}
-            <span className="back-icon">{"<"}</span>
-          </IonButton>
-          <IonTitle className="custom-title">Cart</IonTitle>
-        </IonToolbar>
-      </IonHeader>
+      <div className="back-confirm">
+          <ChevronLeft />
+          <p>Cart</p>
+        </div>
 
       {/* Content */}
       <IonContent className="ion-padding">
@@ -72,7 +68,7 @@ const CartCatering = () => {
             <img
               src={item.imageUrl}
               alt={item.name}
-              className="w-16 h-16 object-cover rounded-md"
+              className="w-24 h-24 object-cover rounded-md"
             />
 
             {/* Product Info */}
@@ -85,7 +81,7 @@ const CartCatering = () => {
             </div>
 
             {/* Quantity Control */}
-            <div className="flex items-center gap-1">
+            <div className="flex items-center gap-3">
               {/* Tombol Minus */}
               <button
                 onClick={() =>
@@ -101,7 +97,9 @@ const CartCatering = () => {
               >
                 <IonIcon icon={removeOutline} />
               </button>
+
               <span className="font-semibold text-sm">{item.quantity}</span>
+              
               {/* Tombol Plus */}
               <button
                 onClick={() =>
@@ -129,9 +127,8 @@ const CartCatering = () => {
        <span className="footer-total">Rp{calculateTotal().toLocaleString()}</span>
       </div>
 
-        <IonButton expand="block" className="custom-confirm-button">
-          Payment
-        </IonButton>
+      <button className="btn-order">Payment</button>
+        
       </IonFooter>
     </IonPage>
   );

@@ -1,7 +1,14 @@
-/* Mengubah ukuran font untuk IonTitle */
-.custom-title {
-  font-size: 24px; /* Ukuran font lebih kecil */
+.back-confirm {
+  display: flex;
+  padding: 20px 0 20px 25px;
+  align-items: center;
 }
+
+.back-confirm p {
+  font-size: 20px !important;
+  padding-left: 15px;
+}
+
 
 /* Warna hijau kustom */
 .bg-custom-green {
@@ -20,20 +27,6 @@
   background-color: #466033;
 }
 
-.custom-confirm-button {
-  border-radius: 25px !important;
-  margin-bottom: 25px !important;
-  width: 80%;
-  margin: 0 auto;
-  background-color: #597445;
-  color: white;
-  font-size: 18px;
-  font-weight: bold;
-}
-
-.custom-confirm-button:hover {
-  background-color: #466033;
-}
 
 /* Tombol Bulat untuk Plus dan Minus */
 button {
@@ -69,13 +62,6 @@ p.text-sm {
   flex: 0 0 auto;
 }
 
-/* CSS untuk memperbesar tanda "<" */
-.back-icon {
-  font-size: 25px; /* Sesuaikan ukuran yang diinginkan */
-  font-weight: bold; /* Bisa menambahkan ketebalan jika diinginkan */
-  color: #000; /* Menyesuaikan warna, bisa diganti dengan warna sesuai kebutuhan */
-}
-
 /* Mengubah ukuran dan peletakan tombol quantity */
 button.h-6.w-6 {
   font-size: 16px;
@@ -90,13 +76,24 @@ span.font-semibold {
 }
 
 
+/* FOOTER */
+IonFooter {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+
 .footer-container {
   display: flex;
-  justify-content: space-between; /* Bagi ruang di antara elemen */
-  align-items: center; /* Pastikan vertikalnya sejajar */
-  padding: 16px; /* Sesuaikan padding */
-  background-color: white; /* Warna latar belakang */
+  justify-content: space-between; /* Teks "Total" rata kiri-kanan */
+  align-items: center; /* Vertikal rata tengah */
+  width: 100%; /* Lebar penuh */
+  padding: 10px 20px; /* Tambahkan jarak dalam */
+  box-sizing: border-box; /* Pastikan padding tidak merusak tata letak */
 }
+
 
 .footer-label {
   font-size: 16px; /* Ukuran font "Total:" */
@@ -109,6 +106,20 @@ span.font-semibold {
   font-weight: bold; /* Font lebih tebal untuk harga */
   color: black; /* Warna hijau sesuai dengan desain */
   margin: 0; /* Hilangkan margin */
+}
+
+.btn-order {
+  width: 60%; /* Atur lebar tombol */
+  max-width: 250px; /* Batas maksimum */
+  background-color: #597445;
+  color: white;
+  border-radius: 20px; /* Membulatkan sudut */
+  padding: 10px;
+  font-size: 18px !important;
+  cursor: pointer;
+  margin-top: 10px !important;  /* Jarak atas dari elemen sebelumnya */
+  margin-left: 70px;
+  margin-bottom: 10px;
 }
 
 
