@@ -20,6 +20,12 @@ ion-content {
   padding-bottom: 30px;
 }
 
+.catering-card:active {
+  transform: scale(0.95);
+  transition: transform 0.2s;
+  transition-timing-function: ease-out;
+}
+
 .catering-container ion-card {
   box-shadow: none !important;
   background-color: transparent !important;

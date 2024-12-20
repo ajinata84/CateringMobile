@@ -1,8 +1,15 @@
 import React, { useState } from "react";
 import "./index.css";
-import { IonHeader, IonSearchbar, IonTitle, IonToolbar, useIonRouter } from "@ionic/react";
+import {
+  IonHeader,
+  IonSearchbar,
+  IonTitle,
+  IonToolbar,
+  useIonRouter,
+} from "@ionic/react";
 import { IonCol, IonGrid, IonRow } from "@ionic/react";
 import { History, ListFilter, MapPin } from "lucide-react";
+import PromoBanner from "../PromoBanner";
 
 export default function SrachFilters() {
   const router = useIonRouter();
@@ -11,13 +18,17 @@ export default function SrachFilters() {
   const categories = ["Harian", "Kantoran", "Pernikahan", "Acara"]; // List category
 
   const goToSearch = () => {
-    router.push('/search/test', 'forward', 'push');
+    router.push("/search/test", "forward", "push");
   };
 
   return (
     <div className="mb-4">
       <div className="search-bar">
-        <IonSearchbar value="" class="custom" onClick={goToSearch}></IonSearchbar>
+        <IonSearchbar
+          value=""
+          class="custom"
+          onClick={goToSearch}
+        ></IonSearchbar>
       </div>
 
       <div className="location-history">
@@ -34,7 +45,7 @@ export default function SrachFilters() {
           </IonRow>
         </IonGrid>
       </div>
-
+      <PromoBanner />
       <div className="categories">
         <h1>Categories</h1>
         <ListFilter size={32} color="#597445" strokeWidth={2.25} />

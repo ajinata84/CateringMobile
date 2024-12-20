@@ -11,7 +11,7 @@ export default function AppHeader({ title }: { title?: string }) {
           <IonButton
             fill="default"
             color="light"
-            className="text-black shadow-none bg-white"
+            className="text-black shadow-none bg-white rounded-lg"
             onClick={() => window.history.back()}
             routerDirection="back"
           >

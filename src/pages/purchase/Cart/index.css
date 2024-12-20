@@ -1,3 +1,7 @@
+ion-footer {
+  background-color: white;
+}
+
 .back-confirm {
   display: flex;
   padding: 20px 0 20px 25px;
@@ -86,6 +90,7 @@ IonFooter {
 
 
 .footer-container {
+  background-color: white;
   display: flex;
   justify-content: space-between; /* Teks "Total" rata kiri-kanan */
   align-items: center; /* Vertikal rata tengah */

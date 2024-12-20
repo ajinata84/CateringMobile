@@ -82,8 +82,8 @@ const App: React.FC = () => (
           <Route exact path="/purchase/cart" component={Cart} />
           <Route exact path="/purchase/confirmation" component={Confirmation} />
 
-          <Route exact path="/tabs/beranda" component={Beranda} />
           <Route exact path="/tabs/aktivitas" component={Aktivitas} />
+          <Route exact path="/tabs/beranda" component={Beranda} />
           <Route exact path="/tabs/profil" component={Profil} />
           <Route exact path="/tabs">
             <Redirect to="/tabs/beranda" />

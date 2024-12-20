@@ -1,7 +1,7 @@
 import { ChevronLeft } from "lucide-react";
 import React, { useState } from "react";
 import "./index.css";
-import { IonPage } from "@ionic/react";
+import { IonContent, IonPage } from "@ionic/react";
 
 export default function Aktivitas() {
   const [activeTab, setActiveTab] = useState<"ongoing" | "completed">(
@@ -14,7 +14,7 @@ export default function Aktivitas() {
 
   return (
     <IonPage>
-      <div>
+      <IonContent>
         <div className="back-confirm">
           <p>List Transaksi</p>
         </div>
@@ -95,7 +95,7 @@ export default function Aktivitas() {
             <p>Belum ada transaksi.</p>
           </div>
         )}
-      </div>
+      </IonContent>
     </IonPage>
   );
 }
