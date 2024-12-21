@@ -25,7 +25,7 @@ export default function PromoBanner() {
   }, [api]);
 
   return (
-    <div>
+    <div className="p-1">
       <Carousel
         opts={{
           loop: true,
