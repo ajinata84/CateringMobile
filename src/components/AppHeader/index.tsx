@@ -1,8 +1,19 @@
-import { IonHeader, IonToolbar, IonButtons, IonButton, IonTitle } from "@ionic/react";
+import {
+  IonHeader,
+  IonToolbar,
+  IonButtons,
+  IonButton,
+  IonTitle,
+  useIonRouter,
+} from "@ionic/react";
 import { ChevronLeft } from "lucide-react";
-import React from "react";
+import "./header.css";
+import { useCart } from "@/hooks/use-cart";
 
 export default function AppHeader({ title }: { title?: string }) {
+  const router = useIonRouter();
+  const { items } = useCart();
+
   return (
     <IonHeader className="ion-no-border">
       <IonToolbar>
@@ -11,6 +22,7 @@ export default function AppHeader({ title }: { title?: string }) {
           <IonButton
             fill="default"
             color="light"
+            shape="round"
             className="text-black shadow-none bg-white rounded-lg"
             onClick={() => window.history.back()}
             routerDirection="back"
@@ -18,6 +30,21 @@ export default function AppHeader({ title }: { title?: string }) {
             <ChevronLeft />
           </IonButton>
         </IonButtons>
+        {router.routeInfo.pathname != "/purchase/cart" && items.length > 0 && (
+          <IonButtons slot="end">
+            <IonButton
+              fill="solid"
+              color="primary"
+              shape="round"
+              className="cart-button capitalize"
+              onClick={() => router.push("/purchase/cart")}
+            >
+              <span className="font-normal px-2">
+                {items.length} Items In cart
+              </span>
+            </IonButton>
+          </IonButtons>
+        )}
       </IonToolbar>
     </IonHeader>
   );

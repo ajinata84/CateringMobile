@@ -1,140 +1,123 @@
 import React, { useState } from "react";
-import {
-  IonPage,
-  IonHeader,
-  IonToolbar,
-  IonTitle,
-  IonContent,
-  IonFooter,
-  IonButton,
-  IonIcon,
-} from "@ionic/react";
-import { addOutline, removeOutline } from "ionicons/icons"; // Import icon yang digunakan
-import "./index.css"; // File CSS tetap digunakan
-import { ChevronLeft } from "lucide-react";
+import { IonPage, IonContent, IonFooter, IonIcon } from "@ionic/react";
+import { addOutline, removeOutline } from "ionicons/icons";
+import "./index.css";
 import AppHeader from "@/components/AppHeader";
+import { useCart } from "@/hooks/use-cart";
+import { DeleteDialog } from "./DeleteDialog";
+import { Paket } from "@/types/interfaces";
 
 const CartCatering = () => {
-  const [cartItems, setCartItems] = useState([
-    {
-      id: 1,
-      name: "Paket Kenyang Gembira",
-      quantity: 1,
-      imageUrl: "./src/pages/purchase/cart/img/capjay.jpg",
-      timespan: "Harian",
-      price: 40000,
-    },
-    {
-      id: 2,
-      name: "Paket Kenyang Gembira",
-      quantity: 1,
-      imageUrl: "./src/pages/purchase/cart/img/nasgor.jpg",
-      timespan: "Mingguan",
-      price: 40000,
-    },
-  ]);
+  const { items, addToCart, subtractQuantity } = useCart();
+  const [selectedItems, setSelectedItems] = useState<Paket[]>([]); // Changed to Paket[]
+  const [deleteDialog, setDeleteDialog] = useState(false);
+  const [currentDelete, setCurrentDelete] = useState<string>("");
 
-  const [selectedItems, setSelectedItems] = useState<number[]>([]);
-
-  const handleCheckboxChange = (id: number) => {
-    if (selectedItems.includes(id)) {
-      setSelectedItems(selectedItems.filter((itemId) => itemId !== id));
+  const handleCheckboxChange = (paket: Paket) => {
+    if (selectedItems.some((item) => item.id === paket.id)) {
+      setSelectedItems(selectedItems.filter((item) => item.id !== paket.id));
     } else {
-      setSelectedItems([...selectedItems, id]);
+      setSelectedItems([...selectedItems, paket]);
     }
   };
 
+  const handleDelete = () => {
+    setDeleteDialog(true);
+  };
+
   const calculateTotal = () => {
-    return cartItems
-      .filter((item) => selectedItems.includes(item.id))
-      .reduce((total, item) => total + item.price * item.quantity, 0);
+    return selectedItems.reduce(
+      (acc, item) =>
+        acc + item.harga * items.find((i) => i.paket.id === item.id)?.quantity!,
+      0
+    );
+  };
+
+  const calculateDurasi = () => {
+    const maxDurasi = Math.max(
+      ...selectedItems.map(
+        (item) =>
+          items.find((i) => i.paket.id === item.id)?.quantity! * item.durasi
+      )
+    );
+
+    return selectedItems.length > 0 ? maxDurasi : 0;
   };
 
   return (
-    <IonPage>
-      <IonContent className="ion-padding">
+    <>
+      <IonPage>
         <AppHeader title="Cart" />
-        {cartItems.map((item) => (
-          <div
-            key={item.id}
-            className="flex items-center gap-4 py-4 border-b border-gray-300 grid-cols-[auto_1fr_auto_auto]"
-          >
-            {/* Checkbox */}
+        <IonContent>
+          {items.map((item) => (
             <div
-              onClick={() => handleCheckboxChange(item.id)}
-              className={`h-6 w-6 border-2 rounded-full flex items-center justify-center cursor-pointer ${
-                selectedItems.includes(item.id)
-                  ? "bg-custom-green border-custom-green"
-                  : "border-gray-300"
-              }`}
+              key={item.paket.id}
+              className="flex flex-col items-center gap-4 py-4 border-b border-gray-300 grid-cols-[auto_1fr_auto_auto] active:bg-gray-100 transition-colors p-4"
             >
-              {selectedItems.includes(item.id) && (
-                <span className="checkmark">✔</span>
-              )}
-            </div>
-
-            {/* Product Image */}
-            <img
-              src={item.imageUrl}
-              alt={item.name}
-              className="w-24 h-24 object-cover rounded-md"
-            />
-
-            {/* Product Info */}
-            <div className="flex-1">
-              <h3 className=" catering-name text-base font-semibold text-ellipsis overflow-hidden">
-                {item.name}
-              </h3>
-              {/* Detail Harian/Mingguan */}
-              <p className="text-sm text-gray-500">{item.timespan}</p>
-              {/* Harga */}
-              <p className="text-sm text-gray-500 mt-2">
-                Rp{item.price.toLocaleString()}
-              </p>
-            </div>
-
-            {/* Quantity Control */}
-            <div className="flex items-center gap-3">
-              {/* Tombol Minus */}
-              <button
-                onClick={() =>
-                  setCartItems((prev) =>
-                    prev.map((product) =>
-                      product.id === item.id
-                        ? {
-                            ...product,
-                            quantity: Math.max(1, product.quantity - 1),
-                          }
-                        : product
+              <div className="flex flex-row  items-center w-full justify-start">
+                <div
+                  onClick={() => handleCheckboxChange(item.paket)}
+                  className={`h-6 w-6 border-2 rounded-full flex items-center justify-center cursor-pointer self-start${
+                    selectedItems.some(
+                      (selected) => selected.id === item.paket.id
                     )
-                  )
-                }
-                className="h-6 w-6 bg-gray-200 rounded-full flex items-center justify-center hover:bg-gray-300"
-              >
-                <IonIcon icon={removeOutline} />
-              </button>
+                      ? "border-custom-green !bg-[#597445] "
+                      : "border-gray-300"
+                  }`}
+                >
+                  {selectedItems.some(
+                    (selected) => selected.id === item.paket.id
+                  ) && <span className="checkmark ">✔</span>}
+                </div>
 
-              <span className="font-semibold text-sm">{item.quantity}</span>
+                <div className="w-full flex flex-row justify-evenly flex-wrap">
+                  {item.imageUrls.map((url) => (
+                    <img
+                      src={url}
+                      alt={item.paket.nama}
+                      className="w-24 h-24 object-cover rounded-md mt-2"
+                      key={url}
+                    />
+                  ))}
+                </div>
+              </div>
+              <div className="flex flex-row items-center w-full  pt-2">
+                <div className="flex-1">
+                  <h3 className="catering-name text-base font-semibold text-ellipsis overflow-hidden">
+                    {item.paket.nama}
+                  </h3>
+                </div>
 
-              {/* Tombol Plus */}
-              <button
-                onClick={() =>
-                  setCartItems((prev) =>
-                    prev.map((product) =>
-                      product.id === item.id
-                        ? { ...product, quantity: product.quantity + 1 }
-                        : product
-                    )
-                  )
-                }
-                className="h-6 w-6 bg-gray-200 rounded-full flex items-center justify-center hover:bg-gray-300"
-              >
-                <IonIcon icon={addOutline} />
-              </button>
+                <div className="flex items-center gap-3">
+                  <button
+                    onClick={() => {
+                      if (item.quantity === 1) {
+                        setCurrentDelete(item.paket.id);
+                        handleDelete();
+                      } else {
+                        subtractQuantity(item.paket.id);
+                      }
+                    }}
+                    className="h-6 w-6 bg-gray-200 rounded-full flex items-center justify-center hover:bg-gray-300 !mt-0"
+                  >
+                    <IonIcon icon={removeOutline} />
+                  </button>
+
+                  <span className="font-semibold text-sm !mt-0">
+                    {item.quantity}
+                  </span>
+
+                  <button
+                    onClick={() => addToCart(item.paket.id)} // You'll need to adjust this based on your Paket interface
+                    className="h-6 w-6 bg-gray-200 rounded-full flex items-center justify-center hover:bg-gray-300 !mt-0"
+                  >
+                    <IonIcon icon={addOutline} />
+                  </button>
+                </div>
+              </div>
             </div>
-          </div>
-        ))}
-      </IonContent>
+          ))}
+        </IonContent>
         <IonFooter>
           <div className="footer-container">
             <span className="footer-label">Total:</span>
@@ -142,10 +125,19 @@ const CartCatering = () => {
               Rp{calculateTotal().toLocaleString()}
             </span>
           </div>
-
+          <div className="footer-container">
+            <span className="footer-label">Durasi:</span>
+            <span className="footer-total">{calculateDurasi()} hari</span>
+          </div>
           <button className="btn-order">Payment</button>
         </IonFooter>
-    </IonPage>
+      </IonPage>
+      <DeleteDialog
+        open={deleteDialog}
+        deleteFn={() => subtractQuantity(currentDelete)}
+        closeFn={() => setDeleteDialog(false)}
+      />
+    </>
   );
 };
 

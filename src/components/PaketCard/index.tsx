@@ -2,16 +2,7 @@ import { useIonRouter } from "@ionic/react";
 import { LucideSun, LucideMoon, LucideSunrise } from "lucide-react";
 import React from "react";
 import { Paket } from "@/types/interfaces";
-
-function getRangeTimeString(hours: number[]) {
-  if (!hours.length) return "";
-  const minHour = Math.min(...hours);
-  const maxHour = Math.max(...hours);
-  return `${String(minHour).padStart(2, "0")}:00 - ${String(maxHour).padStart(
-    2,
-    "0"
-  )}:00`;
-}
+import { getScheduleTimes } from "@/lib/utils";
 
 interface PaketCardProps {
   paketRoute: string;
@@ -33,25 +24,6 @@ export default function PaketCard({ paketRoute, pakets }: PaketCardProps) {
     return images.slice(0, 4);
   };
 
-  const getScheduleTimes = (paket: Paket) => {
-    const morning: number[] = [];
-    const day: number[] = [];
-    const evening: number[] = [];
-
-    paket.Schedules.forEach((schedule) => {
-      const hour = parseInt(schedule.waktu.split(":")[0], 10);
-      if (hour < 10) morning.push(hour);
-      else if (hour < 18) day.push(hour);
-      else evening.push(hour);
-    });
-
-    return {
-      morning: getRangeTimeString(morning),
-      day: getRangeTimeString(day),
-      evening: getRangeTimeString(evening),
-    };
-  };
-
   return (
     <div className="space-y-4">
       {pakets.map((paket) => {
@@ -61,7 +33,7 @@ export default function PaketCard({ paketRoute, pakets }: PaketCardProps) {
         return (
           <div
             key={paket.id}
-            className="flex flex-row outline outline-2 outline-[#D5D5D5] active:bg-gray-100 h-64"
+            className="flex flex-row outline outline-2 outline-[#D5D5D5] active:bg-gray-100 h-72"
             onClick={() => {
               router.push(`${paketRoute}/paket/${paket.id}`, "forward", "push");
             }}

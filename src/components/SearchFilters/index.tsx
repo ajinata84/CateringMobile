@@ -47,27 +47,29 @@ export default function SrachFilters() {
           </IonGrid>
         </div>
       </div>
-      <div className="mt-28" />
-      <PromoBanner />
-      <div className="categories">
-        <h1>Categories</h1>
-        <ListFilter size={32} color="#597445" strokeWidth={2.25} />
-      </div>
+      <div className="p-1">
+        <div className="mt-28" />
+        <PromoBanner />
+        <div className="categories">
+          <h1>Categories</h1>
+          <ListFilter size={32} color="#597445" strokeWidth={2.25} />
+        </div>
 
-      <div className="category-list ">
-        <IonGrid>
-          <IonRow>
-            {categories.map((category) => (
-              <IonCol
-                key={category}
-                className={activeCategory === category ? "active" : ""} // Tambahkan class "active" jika sesuai
-                onClick={() => setActiveCategory(category)} // Ubah kategori aktif saat diklik
-              >
-                {category}
-              </IonCol>
-            ))}
-          </IonRow>
-        </IonGrid>
+        <div className="category-list ">
+          <IonGrid>
+            <IonRow>
+              {categories.map((category) => (
+                <IonCol
+                  key={category}
+                  className={activeCategory === category ? "active" : ""}
+                  onClick={() => setActiveCategory(category)}
+                >
+                  {category}
+                </IonCol>
+              ))}
+            </IonRow>
+          </IonGrid>
+        </div>
       </div>
     </div>
   );

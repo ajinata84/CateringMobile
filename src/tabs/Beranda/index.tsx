@@ -34,7 +34,9 @@ export default function Beranda() {
       <IonContent>
         <div className="p-8">
           <SearchFilters />
-          <CateringList caterings={caterings} />
+          <div className="p-1">
+            <CateringList caterings={caterings} />
+          </div>
         </div>
         {router.routeInfo.pathname === "/tabs/beranda" && (
           <IonFab slot="fixed" vertical="bottom" horizontal="end">

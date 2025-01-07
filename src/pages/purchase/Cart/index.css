@@ -95,7 +95,7 @@ IonFooter {
   justify-content: space-between; /* Teks "Total" rata kiri-kanan */
   align-items: center; /* Vertikal rata tengah */
   width: 100%; /* Lebar penuh */
-  padding: 10px 20px; /* Tambahkan jarak dalam */
+  padding: 5px 20px; /* Tambahkan jarak dalam */
   box-sizing: border-box; /* Pastikan padding tidak merusak tata letak */
 }
 

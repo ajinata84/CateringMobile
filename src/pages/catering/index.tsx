@@ -78,6 +78,7 @@ export default function Catering() {
           paketRoute={router.routeInfo.pathname}
           pakets={catering.Pakets}
         />
+        <div className="mb-36"></div>
       </IonContent>
     </IonPage>
   );

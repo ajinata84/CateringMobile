@@ -1,17 +1,8 @@
 import { IonCard, IonCardContent, useIonRouter } from "@ionic/react";
 import "./list.css";
 import { LucideSun, LucideMoon, LucideSunrise } from "lucide-react";
-import { Catering } from "@/tabs/Beranda";
-
-function getRangeTimeString(hours: number[]) {
-  if (!hours.length) return "";
-  const minHour = Math.min(...hours);
-  const maxHour = Math.max(...hours);
-  return `${String(minHour).padStart(2, "0")}:00 - ${String(maxHour).padStart(
-    2,
-    "0"
-  )}:00`;
-}
+import { Catering, Paket } from "@/types/interfaces";
+import { getRangeTimeString } from "@/lib/utils";
 
 function CateringList({ caterings }: { caterings: Catering[] }) {
   const router = useIonRouter();
@@ -19,7 +10,7 @@ function CateringList({ caterings }: { caterings: Catering[] }) {
   return (
     <>
       {caterings.map((cat) => {
-        const prices = cat.Pakets.map((p) => p.harga);
+        const prices = cat.Pakets.map((p: Paket) => p.harga);
         const minPrice = prices.length ? Math.min(...prices) : 0;
         const maxPrice = prices.length ? Math.max(...prices) : 0;
 
@@ -27,7 +18,7 @@ function CateringList({ caterings }: { caterings: Catering[] }) {
         const day: number[] = [];
         const evening: number[] = [];
 
-        cat.Pakets.forEach((paket) => {
+        cat.Pakets.forEach((paket: Paket) => {
           paket.Schedules.forEach((schedule) => {
             const hour = parseInt(schedule.waktu.split(":")[0], 10);
             if (hour < 10) morning.push(hour);
