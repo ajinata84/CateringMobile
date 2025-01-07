@@ -23,35 +23,38 @@ export default function SrachFilters() {
 
   return (
     <div className="mb-4">
-      <div className="search-bar">
-        <IonSearchbar
-          value=""
-          class="custom"
-          onClick={goToSearch}
-        ></IonSearchbar>
-      </div>
+      <div className="fixed top-0 z-50 bg-white pt-4">
+        <div className="search-bar">
+          <IonSearchbar
+            value=""
+            class="custom"
+            onClick={goToSearch}
+          ></IonSearchbar>
+        </div>
 
-      <div className="location-history">
-        <IonGrid>
-          <IonRow>
-            <IonCol>
-              <MapPin color="#597445" className="icon" />
-              <p>Malang, Jawa Timur</p>
-            </IonCol>
-            <IonCol>
-              <History color="#30a6ea" className="icon" />
-              <p>Order History</p>
-            </IonCol>
-          </IonRow>
-        </IonGrid>
+        <div className="location-history ">
+          <IonGrid>
+            <IonRow>
+              <IonCol>
+                <MapPin color="#597445" className="icon" />
+                <p>Malang, Jawa Timur</p>
+              </IonCol>
+              <IonCol>
+                <History color="#30a6ea" className="icon" />
+                <p>Order History</p>
+              </IonCol>
+            </IonRow>
+          </IonGrid>
+        </div>
       </div>
+      <div className="mt-28" />
       <PromoBanner />
       <div className="categories">
         <h1>Categories</h1>
         <ListFilter size={32} color="#597445" strokeWidth={2.25} />
       </div>
 
-      <div className="category-list">
+      <div className="category-list ">
         <IonGrid>
           <IonRow>
             {categories.map((category) => (

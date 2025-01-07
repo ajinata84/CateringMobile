@@ -1,37 +1,83 @@
 import AppHeader from "@/components/AppHeader";
 import PaketCard from "@/components/PaketCard";
-import { IonButton, IonContent, IonPage, useIonRouter } from "@ionic/react";
-import { ChevronLeft, MapPin, Phone } from "lucide-react";
-import React from "react";
+import { IonContent, IonPage, useIonRouter } from "@ionic/react";
+import { MapPin, Phone } from "lucide-react";
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router";
+import { Catering as ICatering } from "@/types/interfaces";
+import axios from "axios";
 
 export default function Catering() {
   const router = useIonRouter();
+  const { cateringid } = useParams<{ cateringid: string }>();
+  const [catering, setCatering] = useState<ICatering | null>(null);
+  const [loading, setLoading] = useState(true);
 
-  const path = router.routeInfo.pathname;
+  useEffect(() => {
+    axios
+      .get<ICatering>(`http://localhost:3000/catering/${cateringid}`)
+      .then((response) => {
+        setCatering(response.data);
+      })
+      .catch((error) => {
+        console.error("Get Catering Failed:", error);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
+  }, [cateringid]);
 
-  const dummyImage =
-    "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Gurame_bakar_kecap_2.JPG/1200px-Gurame_bakar_kecap_2.JPG";
+  if (loading) {
+    return (
+      <IonPage>
+        <AppHeader />
+        <IonContent>
+          <div className="flex items-center justify-center h-full">
+            Loading...
+          </div>
+        </IonContent>
+      </IonPage>
+    );
+  }
+
+  if (!catering) {
+    return (
+      <IonPage>
+        <AppHeader />
+        <IonContent>
+          <div className="flex items-center justify-center h-full">
+            Catering not found
+          </div>
+        </IonContent>
+      </IonPage>
+    );
+  }
+
   return (
     <IonPage>
-      <AppHeader />
+      <AppHeader title={catering.nama}/>
       <IonContent>
         <img
-          src={dummyImage}
+          src={catering.imageUrl}
           className="w-full max-h-[30vh] object-cover"
-          alt="catering-thumbnail"
+          alt={`${catering.nama}-thumbnail`}
         />
         <div className="p-4 space-y-4">
-          <h1 className="text-4xl font-semibold">Catering Bu Yayuk</h1>
+          <h1 className="text-4xl font-semibold">{catering.nama}</h1>
           <div className="flex flex-row items-center gap-4">
             <MapPin />
-            Pakisaji
+            {catering.alamat}
           </div>
           <div className="flex flex-row items-center gap-4">
             <Phone />
-            08510*********
+            {catering.hp}
           </div>
+          <p className="text-gray-600">{catering.deskripsi}</p>
         </div>
-        <PaketCard paketRoute={path} />
+        <PaketCard
+          paketRoute={router.routeInfo.pathname}
+          pakets={catering.Pakets}
+        />
       </IonContent>
     </IonPage>
   );

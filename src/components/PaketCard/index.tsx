@@ -1,44 +1,135 @@
 import { useIonRouter } from "@ionic/react";
+import { LucideSun, LucideMoon, LucideSunrise } from "lucide-react";
 import React from "react";
+import { Paket } from "@/types/interfaces";
 
-export default function PaketCard({ paketRoute }: { paketRoute: string }) {
+function getRangeTimeString(hours: number[]) {
+  if (!hours.length) return "";
+  const minHour = Math.min(...hours);
+  const maxHour = Math.max(...hours);
+  return `${String(minHour).padStart(2, "0")}:00 - ${String(maxHour).padStart(
+    2,
+    "0"
+  )}:00`;
+}
+
+interface PaketCardProps {
+  paketRoute: string;
+  pakets: Paket[];
+}
+
+export default function PaketCard({ paketRoute, pakets }: PaketCardProps) {
   const router = useIonRouter();
 
-  const images = [
-    "https://asset.kompas.com/crops/0TAYtSARLhrA8bCNnfQyXeXj2N0=/100x67:900x600/1200x800/data/photo/2021/01/01/5fee5925f248d.jpg",
-    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTCrs-a1Trah8Z5MnhzBF7Ix2pq8ldQSoEUyw&s",
-    "https://cdn0-production-images-kly.akamaized.net/GfoYUbIjsNs49qE_BsYXe2aGfF8=/2340x0:6316x5303/500x667/filters:quality(75):strip_icc():format(webp)/kly-media-production/medias/2987431/original/059279800_1575532929-shutterstock_1262600215.jpg",
-    "https://asset.kompas.com/crops/-EW4dZIFD3U055K4qtHqSgUg_hM=/92x67:892x600/1200x800/data/photo/2023/08/23/64e59deb79bfb.jpg",
-  ];
-  return (
-    <div
-      className="flex flex-row outline outline-2 outline-[#D5D5D5] active:bg-gray-100"
-      onClick={() => {
-        router.push(`${paketRoute}/paket/1`, "forward", "push");
-      }}
-    >
-      <div className="w-[55%] p-4 ">
-        <h1 className="text-xl font-semibold">Paket Kenyang Gembira</h1>
-        <span className="text-xs">Items List:</span>
+  const getFoodImages = (paket: Paket) => {
+    const images: string[] = [];
+    paket.Schedules.forEach((schedule) => {
+      schedule.ScheduleFoods.forEach((food) => {
+        if (!images.includes(food.makanan.imageUrl)) {
+          images.push(food.makanan.imageUrl);
+        }
+      });
+    });
+    return images.slice(0, 4);
+  };
 
-        <div className="flex flex-col gap-1 mt-2">
-          <span>Capjay Mantap Jiwa</span>
-          <span>Lalapan Ayam Goreng</span>
-          <span>Boba Tea Diabetes</span>
-          <span className="text-gray-500 font-medium !mt-0">+4 more items</span>
-        </div>
-        <span className="font-semibold">Rp. 50k - 100k</span>
-      </div>
-      <div className="w-[45%] grid grid-cols-2 grid-rows-2">
-        {images.map((image, index) => (
-          <img
-            key={index}
-            src={image}
-            alt="thumbnail"
-            className="w-full h-full object-cover"
-          />
-        ))}
-      </div>
+  const getScheduleTimes = (paket: Paket) => {
+    const morning: number[] = [];
+    const day: number[] = [];
+    const evening: number[] = [];
+
+    paket.Schedules.forEach((schedule) => {
+      const hour = parseInt(schedule.waktu.split(":")[0], 10);
+      if (hour < 10) morning.push(hour);
+      else if (hour < 18) day.push(hour);
+      else evening.push(hour);
+    });
+
+    return {
+      morning: getRangeTimeString(morning),
+      day: getRangeTimeString(day),
+      evening: getRangeTimeString(evening),
+    };
+  };
+
+  return (
+    <div className="space-y-4">
+      {pakets.map((paket) => {
+        const foodImages = getFoodImages(paket);
+        const { morning, day, evening } = getScheduleTimes(paket);
+
+        return (
+          <div
+            key={paket.id}
+            className="flex flex-row outline outline-2 outline-[#D5D5D5] active:bg-gray-100 h-64"
+            onClick={() => {
+              router.push(`${paketRoute}/paket/${paket.id}`, "forward", "push");
+            }}
+          >
+            <div className="w-[55%] p-4 flex flex-col">
+              <h1 className="text-xl font-semibold">{paket.nama}</h1>
+              <div className="mt-2 space-y-1 mb-4">
+                <ul className="text-sm">
+                  {morning && (
+                    <li className="flex items-center gap-2">
+                      <LucideSunrise size={13} color="#FFA500" />
+                      {morning}
+                    </li>
+                  )}
+                  {day && (
+                    <li className="flex items-center gap-2">
+                      <LucideSun size={13} color="#FFD700" /> {day}
+                    </li>
+                  )}
+                  {evening && (
+                    <li className="flex items-center gap-2">
+                      <LucideMoon size={13} color="#6A5ACD" /> {evening}
+                    </li>
+                  )}
+                </ul>
+              </div>
+              <span className="text-xs">Items List:</span>
+              <div className="flex flex-col gap-1 ">
+                {paket.Schedules[0]?.ScheduleFoods.slice(0, 3).map((food) => (
+                  <span key={food.id}>{food.makanan.nama}</span>
+                ))}
+                {paket.Schedules[0]?.ScheduleFoods.length > 3 && (
+                  <span className="text-gray-500 font-medium">
+                    +{paket.Schedules[0].ScheduleFoods.length - 3} more items
+                  </span>
+                )}
+              </div>
+
+              <span className="font-semibold !mt-2">
+                Rp. {paket.harga.toLocaleString()}
+              </span>
+            </div>
+            <div
+              className={`w-[45%] grid ${
+                foodImages.length === 3 ? "grid-rows-2" : "grid-rows-2"
+              }`}
+            >
+              {foodImages.map((image, index) => (
+                <img
+                  key={index}
+                  src={image}
+                  alt="thumbnail"
+                  className={`w-full h-full object-cover
+                    ${
+                      foodImages.length === 2 && index === 0 ? "row-span-1" : ""
+                    }
+                    ${
+                      foodImages.length === 2 && index === 1 ? "row-span-1" : ""
+                    }
+                    ${
+                      foodImages.length === 3 && index === 2 ? "col-span-2" : ""
+                    }`}
+                />
+              ))}
+            </div>
+          </div>
+        );
+      })}
     </div>
   );
 }
