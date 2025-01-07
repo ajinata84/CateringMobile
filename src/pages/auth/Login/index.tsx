@@ -64,6 +64,7 @@ export default function Login() {
 
       setTimeout(() => {
         router.push("/", "root", "push");
+        window.location.reload();
       }, 1000);
     } catch (error) {
       if (axios.isAxiosError(error)) {
