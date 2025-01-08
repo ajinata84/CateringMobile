@@ -7,9 +7,9 @@ export default function PromoBanner() {
   const [api, setApi] = useState<CarouselApi>();
   const [selectedIndex, setSelectedIndex] = useState(0);
   const banners = [
-    "https://api-storage.djie.cloud/aji/catering-banner/banner-1.jpg",
-    "https://api-storage.djie.cloud/aji/catering-banner/banner-2.jpg",
-    "https://api-storage.djie.cloud/aji/catering-banner/banner-3.jpg",
+    "https://objects.djie.cloud/aji/catering-banner/banner-1.jpg",
+    "https://objects.djie.cloud/aji/catering-banner/banner-2.jpg",
+    "https://objects.djie.cloud/aji/catering-banner/banner-3.jpg",
   ];
 
   useEffect(() => {

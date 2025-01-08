@@ -9,12 +9,12 @@ import { toast } from "sonner";
 import { useIonRouter } from "@ionic/react";
 
 const editProfileSchema = z.object({
-  username: z.string().min(3, "Username must be at least 3 characters"),
-  email: z.string().email("Invalid email format"),
-  password: z.string().min(6, "Password must be at least 6 characters"),
-  hp: z.string().min(10, "Phone number must be at least 10 digits"),
-  alamat: z.string().min(5, "Address must be at least 5 characters"),
-  img: z.string().url("Invalid image URL"),
+  username: z.string().optional(),
+  email: z.string().optional(),
+  password: z.string().optional(),
+  hp: z.string().optional(),
+  alamat: z.string().optional(),
+  img: z.string().url("Invalid image URL").optional(),
 });
 
 type EditProfileFormData = z.infer<typeof editProfileSchema>;
@@ -57,7 +57,6 @@ export default function EditProfile() {
         setUserData({ username, email, password, hp, alamat, img });
         setValue("username", username);
         setValue("email", email);
-        setValue("password", password); // Sebaiknya password tidak di-prefetch untuk keamanan
         setValue("hp", hp);
         setValue("alamat", alamat);
         setValue("img", img);
@@ -84,6 +83,7 @@ export default function EditProfile() {
       toast.success("Profile updated successfully!");
       setTimeout(() => {
         router.push("/tabs/profil", "root", "replace");
+        window.location.reload();
       }, 1000);
     } catch (error) {
       if (axios.isAxiosError(error)) {
