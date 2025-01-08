@@ -28,7 +28,6 @@
   font-weight: 600;
   border-bottom: 4px solid #597445;
   background-color: white;
-  box-shadow: 2px 9px 8px 4px rgba(0, 0, 0, 0.1);
 }
 
 .content {
@@ -78,7 +77,6 @@
   background-color: white;
   padding: 18px 21px;
   margin: 0 20px 10px 20px;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .card .title {
@@ -141,8 +139,15 @@
 
 .list-menu {
   display: flex;
+  flex-direction: column;
   border-bottom: 1px solid #d1d1d1;
   padding: 14px 9px;
+}
+
+.list-image {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
 }
 
 .menu-order {
@@ -157,6 +162,7 @@
   width: 100px;
   height: 100px;
   border-radius: 15px;
+  object-fit: cover;
 }
 
 .list-menu h2 {
@@ -169,10 +175,9 @@
 }
 
 .detail-menu {
-  margin-left: 15px;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  flex-direction: row;
+  justify-content: space-between;
   gap: 5px;
 }
 

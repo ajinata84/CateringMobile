@@ -30,21 +30,23 @@ export default function AppHeader({ title }: { title?: string }) {
             <ChevronLeft />
           </IonButton>
         </IonButtons>
-        {router.routeInfo.pathname != "/purchase/cart" && items.length > 0 && (
-          <IonButtons slot="end">
-            <IonButton
-              fill="solid"
-              color="primary"
-              shape="round"
-              className="cart-button capitalize"
-              onClick={() => router.push("/purchase/cart")}
-            >
-              <span className="font-normal px-2">
-                {items.length} Items In cart
-              </span>
-            </IonButton>
-          </IonButtons>
-        )}
+        {router.routeInfo.pathname != "/purchase/cart" &&
+          router.routeInfo.pathname != "/purchase/confirmation" &&
+          items.length > 0 && (
+            <IonButtons slot="end">
+              <IonButton
+                fill="solid"
+                color="primary"
+                shape="round"
+                className="cart-button capitalize"
+                onClick={() => router.push("/purchase/cart")}
+              >
+                <span className="font-normal px-2">
+                  {items.length} Items In cart
+                </span>
+              </IonButton>
+            </IonButtons>
+          )}
       </IonToolbar>
     </IonHeader>
   );

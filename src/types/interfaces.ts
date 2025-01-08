@@ -31,6 +31,8 @@ export interface Paket {
   durasi: number;
   harga: number;
   deskripsi: string;
+  kategoriId: string;
+  kategori: string;
   Schedules: Schedule[];
 }
 

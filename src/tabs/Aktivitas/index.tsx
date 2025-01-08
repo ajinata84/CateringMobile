@@ -1,7 +1,8 @@
 import { ChevronLeft } from "lucide-react";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./index.css";
 import { IonContent, IonPage } from "@ionic/react";
+import axios from "axios";
 
 export default function Aktivitas() {
   const [activeTab, setActiveTab] = useState<"ongoing" | "completed">(
@@ -11,6 +12,24 @@ export default function Aktivitas() {
   const showContent = (tab: "ongoing" | "completed") => {
     setActiveTab(tab);
   };
+
+  useEffect(() => {
+    const fetchTransactions = async () => {
+      try {
+        const token = localStorage.getItem("token");
+        const response = await axios.get("http://localhost:3000/transaksi", {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+        console.log(response.data);
+      } catch (error) {
+        console.error("Error fetching user data:", error);
+      }
+    };
+
+    fetchTransactions();
+  }, []);
 
   return (
     <IonPage>

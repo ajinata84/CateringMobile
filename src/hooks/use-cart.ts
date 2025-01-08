@@ -4,7 +4,7 @@ import { toast } from "sonner";
 import { Paket } from "../types/interfaces";
 
 interface CartItem {
-  paket: Paket
+  paket: Paket;
   imageUrls: string[];
   quantity: number;
 }
@@ -16,6 +16,11 @@ interface CartStore {
   subtractQuantity: (paketId: string) => void;
   getQuantity: (paketId: string) => number;
   clearCart: () => void;
+}
+
+interface SelectedStore {
+  selectedItems: CartItem[];
+  setSelectedItems: (items: CartItem[]) => void;
 }
 
 export const useCart = create<CartStore>()(
@@ -119,3 +124,11 @@ export const useCart = create<CartStore>()(
     }
   )
 );
+
+export const useSelectedItems = create<SelectedStore>((set, get) => ({
+  selectedItems: [],
+  setSelectedItems: (items) => set({ selectedItems: items }),
+  getSelectedItems: () => {
+    return get().selectedItems;
+  },
+}));

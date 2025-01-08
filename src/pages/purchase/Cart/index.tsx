@@ -1,24 +1,49 @@
 import React, { useState } from "react";
-import { IonPage, IonContent, IonFooter, IonIcon } from "@ionic/react";
-import { addOutline, removeOutline, trash, trashBinOutline, trashBinSharp, trashOutline } from "ionicons/icons";
+import {
+  IonPage,
+  IonContent,
+  IonFooter,
+  IonIcon,
+  useIonRouter,
+} from "@ionic/react";
+import {
+  addOutline,
+  removeOutline,
+  trash,
+  trashBinOutline,
+  trashBinSharp,
+  trashOutline,
+} from "ionicons/icons";
 import "./index.css";
 import AppHeader from "@/components/AppHeader";
-import { useCart } from "@/hooks/use-cart";
+import { useCart, useSelectedItems } from "@/hooks/use-cart";
 import { DeleteDialog } from "./DeleteDialog";
 import { Paket } from "@/types/interfaces";
 
 const CartCatering = () => {
   const { items, addToCart, subtractQuantity } = useCart();
-  const [selectedItems, setSelectedItems] = useState<Paket[]>([]); // Changed to Paket[]
+  const { selectedItems, setSelectedItems } = useSelectedItems();
+
+  const router = useIonRouter();
+  const [localSelectedItems, setlocalSelectedItems] = useState<Paket[]>([]); // Changed to Paket[]
   const [deleteDialog, setDeleteDialog] = useState(false);
   const [currentDelete, setCurrentDelete] = useState<string>("");
 
   const handleCheckboxChange = (paket: Paket) => {
-    if (selectedItems.some((item) => item.id === paket.id)) {
-      setSelectedItems(selectedItems.filter((item) => item.id !== paket.id));
+    if (localSelectedItems.some((item) => item.id === paket.id)) {
+      setlocalSelectedItems(
+        localSelectedItems.filter((item) => item.id !== paket.id)
+      );
     } else {
-      setSelectedItems([...selectedItems, paket]);
+      setlocalSelectedItems([...localSelectedItems, paket]);
     }
+  };
+
+  const handlePayment = () => {
+    setSelectedItems(
+      items.filter((item) => localSelectedItems.includes(item.paket))
+    );
+    router.push(`/purchase/confirmation`, "forward", "push");
   };
 
   const handleDelete = () => {
@@ -26,7 +51,7 @@ const CartCatering = () => {
   };
 
   const calculateTotal = () => {
-    return selectedItems.reduce(
+    return localSelectedItems.reduce(
       (acc, item) =>
         acc + item.harga * items.find((i) => i.paket.id === item.id)?.quantity!,
       0
@@ -35,13 +60,13 @@ const CartCatering = () => {
 
   const calculateDurasi = () => {
     const maxDurasi = Math.max(
-      ...selectedItems.map(
+      ...localSelectedItems.map(
         (item) =>
           items.find((i) => i.paket.id === item.id)?.quantity! * item.durasi
       )
     );
 
-    return selectedItems.length > 0 ? maxDurasi : 0;
+    return localSelectedItems.length > 0 ? maxDurasi : 0;
   };
 
   return (
@@ -58,14 +83,14 @@ const CartCatering = () => {
                 <div
                   onClick={() => handleCheckboxChange(item.paket)}
                   className={`h-6 w-6 border-2 rounded-full flex items-center justify-center cursor-pointer self-start${
-                    selectedItems.some(
+                    localSelectedItems.some(
                       (selected) => selected.id === item.paket.id
                     )
                       ? "border-custom-green !bg-[#597445] "
                       : "border-gray-300"
                   }`}
                 >
-                  {selectedItems.some(
+                  {localSelectedItems.some(
                     (selected) => selected.id === item.paket.id
                   ) && <span className="checkmark ">✔</span>}
                 </div>
@@ -100,13 +125,16 @@ const CartCatering = () => {
                     }}
                     className="h-6 w-6 bg-gray-200 rounded-full flex items-center justify-center hover:bg-gray-300 !mt-0"
                   >
-                    {item.quantity === 1 ? <IonIcon icon={trashOutline} /> : <IonIcon icon={removeOutline} />}
+                    {item.quantity === 1 ? (
+                      <IonIcon icon={trashOutline} />
+                    ) : (
+                      <IonIcon icon={removeOutline} />
+                    )}
                   </button>
 
                   <span className="font-semibold text-sm !mt-0">
                     {item.quantity}
                   </span>
-
                   <button
                     onClick={() => addToCart(item.paket.id)} // You'll need to adjust this based on your Paket interface
                     className="h-6 w-6 bg-gray-200 rounded-full flex items-center justify-center hover:bg-gray-300 !mt-0"
@@ -129,7 +157,14 @@ const CartCatering = () => {
             <span className="footer-label">Durasi:</span>
             <span className="footer-total">{calculateDurasi()} hari</span>
           </div>
-          <button className="btn-order">Payment</button>
+          <button
+            className="btn-order"
+            onClick={() =>
+              localSelectedItems.length > 0 ? handlePayment() : null
+            }
+          >
+            Payment
+          </button>
         </IonFooter>
       </IonPage>
       <DeleteDialog
