@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent, IonIcon, IonButton, IonButtons, IonItem, IonLabel, IonInput, IonCard } from "@ionic/react";
 import { mailOutline, callOutline, locationOutline } from "ionicons/icons";
 import { ArrowBigLeft, ChevronLeft, Radius } from "lucide-react";
 import "./editprofile.css";
+import axios from "axios";
+import { useHistory } from "react-router-dom";
+import { toast } from "sonner";
 
 export default function EditProfile() {
   return (
@@ -30,7 +33,7 @@ export default function EditProfile() {
             <form onSubmit={(e) => e.preventDefault()}>
               <IonItem>
                 <IonLabel position="stacked">Email</IonLabel>
-                <IonInput type="email" placeholder="Enter your email" />
+                <IonInput type="email" placeholder="{}" />
               </IonItem>
 
               <IonItem>

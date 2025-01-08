@@ -1,10 +1,87 @@
-import React from "react";
-import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent, IonIcon, IonButton, IonButtons, IonItem, IonLabel, IonInput, IonCard } from "@ionic/react";
-import { mailOutline, callOutline, locationOutline } from "ionicons/icons";
-import { ArrowBigLeft, ChevronLeft, Radius } from "lucide-react";
-import "./editprofile.css";
+import React, { useEffect } from "react";
+import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent, IonButton, IonButtons, IonItem, IonLabel, IonInput, IonCard } from "@ionic/react";
+import { ChevronLeft } from "lucide-react";
+import axios from "axios";
+import { z } from "zod";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { toast } from "sonner";
+import { useIonRouter } from "@ionic/react";
+
+const editProfileSchema = z.object({
+  username: z.string().min(3, "Username must be at least 3 characters"),
+  email: z.string().email("Invalid email format"),
+  password: z.string().min(6, "Password must be at least 6 characters"),
+  hp: z.string().min(10, "Phone number must be at least 10 digits"),
+  alamat: z.string().min(5, "Address must be at least 5 characters"),
+  img: z.string().url("Invalid image URL"),
+});
+
+type EditProfileFormData = z.infer<typeof editProfileSchema>;
 
 export default function EditProfile() {
+  const router = useIonRouter();
+
+  const {
+    register,
+    handleSubmit,
+    setValue,
+    formState: { errors },
+  } = useForm<EditProfileFormData>({
+    resolver: zodResolver(editProfileSchema),
+  });
+
+  // Fetch user data on mount
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get("http://localhost:3000/customer/me", {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        });
+        const { username, email, password, hp, alamat, img } = response.data;
+
+        // Set fetched data to the form
+        setValue("username", username);
+        setValue("email", email);
+        setValue("password", password); // Ideally, passwords are not prefetched for security reasons.
+        setValue("hp", hp);
+        setValue("alamat", alamat);
+        setValue("img", img);
+      } catch (error) {
+        console.error("Failed to fetch user data:", error);
+        toast.error("Failed to load profile data.");
+      }
+    };
+
+    fetchData();
+  }, [setValue]);
+
+  // Handle form submission
+  const onSubmit = async (data: EditProfileFormData) => {
+    try {
+      await axios.put("http://localhost:3000/customer/me", data, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      });
+
+      toast.success("Profile updated successfully!");
+      setTimeout(() => {
+        router.push("/tabs/profil", "root", "replace");
+      }, 1000);
+    } catch (error) {
+      if (axios.isAxiosError(error)) {
+        console.error("Update Failed:", error.response?.data?.message);
+        toast.error("Update Failed: " + error.response?.data?.message);
+      } else {
+        console.error("An unexpected error occurred");
+        toast.error("An unexpected error occurred");
+      }
+    }
+  };
+
   return (
     <IonPage>
       <IonHeader>
@@ -20,36 +97,47 @@ export default function EditProfile() {
 
       <IonContent>
         <div className="edit-profile-container">
-          <div className="profile-header">
-            <div className="profile-image"></div>
-            <h2 className="profile-name">Name</h2>
-          </div>
-
           <IonCard className="editprofile-card">
-            {/* Form untuk mengedit data */}
-            <form onSubmit={(e) => e.preventDefault()}>
+            <form onSubmit={handleSubmit(onSubmit)}>
+              <IonItem>
+                <IonLabel position="stacked">Username</IonLabel>
+                <IonInput type="text" {...register("username")} placeholder="Enter your username" />
+                {errors.username && <p className="error-message">{errors.username.message}</p>}
+              </IonItem>
+
               <IonItem>
                 <IonLabel position="stacked">Email</IonLabel>
-                <IonInput type="email" placeholder="Enter your email" />
+                <IonInput type="email" {...register("email")} placeholder="Enter your email" />
+                {errors.email && <p className="error-message">{errors.email.message}</p>}
+              </IonItem>
+
+              <IonItem>
+                <IonLabel position="stacked">Password</IonLabel>
+                <IonInput type="password" {...register("password")} placeholder="Enter your password" />
+                {errors.password && <p className="error-message">{errors.password.message}</p>}
               </IonItem>
 
               <IonItem>
                 <IonLabel position="stacked">Phone</IonLabel>
-                <IonInput type="tel" placeholder="Enter your phone number" />
+                <IonInput type="tel" {...register("hp")} placeholder="Enter your phone number" />
+                {errors.hp && <p className="error-message">{errors.hp.message}</p>}
               </IonItem>
 
               <IonItem>
                 <IonLabel position="stacked">Address</IonLabel>
-                <IonInput type="text" placeholder="Enter your address" />
+                <IonInput type="text" {...register("alamat")} placeholder="Enter your address" />
+                {errors.alamat && <p className="error-message">{errors.alamat.message}</p>}
               </IonItem>
 
-              <IonButton expand="block" className="save-button" style={{ marginTop: "20px" }}>
+              <IonItem>
+                <IonLabel position="stacked">Image URL</IonLabel>
+                <IonInput type="text" {...register("img")} placeholder="Enter image URL" />
+                {errors.img && <p className="error-message">{errors.img.message}</p>}
+              </IonItem>
+
+              <IonButton expand="block" type="submit" className="save-button" style={{ marginTop: "20px" }}>
                 Save Changes
               </IonButton>
-
-              {/* <IonButton expand="block" color="primary" className="rounded-button" style={{ marginTop: "20px" }}>
-                Save Changes
-              </IonButton> */}
             </form>
           </IonCard>
         </div>
