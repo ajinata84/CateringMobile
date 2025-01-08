@@ -7,11 +7,11 @@ import axios from "axios";
 import { useHistory } from "react-router-dom";
 import { toast } from "sonner";
 
-
 export default function Profil() {
   const [user, setUser] = useState({
     username: "",
     email: "",
+    img: "",
   }); // State untuk menyimpan data user
   const history = useHistory(); // Hook untuk navigasi
 
@@ -56,7 +56,7 @@ export default function Profil() {
             <>
               <div className="profile-avatar">
                 <img
-                  src="https://via.placeholder.com/100" // Ganti dengan URL avatar
+                  src={user.img} // Ganti dengan URL avatar
                   alt="Profile Avatar"
                 />
               </div>
@@ -113,4 +113,3 @@ export default function Profil() {
     </IonPage>
   );
 }
-

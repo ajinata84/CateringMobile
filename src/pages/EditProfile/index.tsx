@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent, IonButton, IonButtons, IonItem, IonLabel, IonInput, IonCard } from "@ionic/react";
 import { ChevronLeft } from "lucide-react";
 import axios from "axios";
@@ -31,6 +31,17 @@ export default function EditProfile() {
     resolver: zodResolver(editProfileSchema),
   });
 
+  // State untuk userData dan loading
+  const [userData, setUserData] = useState({
+    username: "",
+    email: "",
+    password: "",
+    hp: "",
+    alamat: "",
+    img: "",
+  });
+  const [isLoading, setIsLoading] = useState(true);
+
   // Fetch user data on mount
   useEffect(() => {
     const fetchData = async () => {
@@ -42,16 +53,19 @@ export default function EditProfile() {
         });
         const { username, email, password, hp, alamat, img } = response.data;
 
-        // Set fetched data to the form
+        // Update userData dan form value
+        setUserData({ username, email, password, hp, alamat, img });
         setValue("username", username);
         setValue("email", email);
-        setValue("password", password); // Ideally, passwords are not prefetched for security reasons.
+        setValue("password", password); // Sebaiknya password tidak di-prefetch untuk keamanan
         setValue("hp", hp);
         setValue("alamat", alamat);
         setValue("img", img);
       } catch (error) {
         console.error("Failed to fetch user data:", error);
         toast.error("Failed to load profile data.");
+      } finally {
+        setIsLoading(false);
       }
     };
 
@@ -82,6 +96,24 @@ export default function EditProfile() {
     }
   };
 
+  // Tampilkan loading state jika data belum di-fetch
+  if (isLoading) {
+    return (
+      <IonPage>
+        <IonHeader>
+          <IonToolbar color="primary">
+            <IonTitle>Loading...</IonTitle>
+          </IonToolbar>
+        </IonHeader>
+        <IonContent>
+          <div style={{ textAlign: "center", marginTop: "50px" }}>
+            <p>Loading your profile data...</p>
+          </div>
+        </IonContent>
+      </IonPage>
+    );
+  }
+
   return (
     <IonPage>
       <IonHeader>
@@ -101,37 +133,37 @@ export default function EditProfile() {
             <form onSubmit={handleSubmit(onSubmit)}>
               <IonItem>
                 <IonLabel position="stacked">Username</IonLabel>
-                <IonInput type="text" {...register("username")} placeholder="Enter your username" />
+                <IonInput type="text" {...register("username")} placeholder={userData.username || "Enter your username"} />
                 {errors.username && <p className="error-message">{errors.username.message}</p>}
               </IonItem>
 
               <IonItem>
                 <IonLabel position="stacked">Email</IonLabel>
-                <IonInput type="email" {...register("email")} placeholder="Enter your email" />
+                <IonInput type="email" {...register("email")} placeholder={userData.email || "Enter your email"} />
                 {errors.email && <p className="error-message">{errors.email.message}</p>}
               </IonItem>
 
               <IonItem>
                 <IonLabel position="stacked">Password</IonLabel>
-                <IonInput type="password" {...register("password")} placeholder="Enter your password" />
+                <IonInput type="password" {...register("password")} placeholder="Enter your new password" />
                 {errors.password && <p className="error-message">{errors.password.message}</p>}
               </IonItem>
 
               <IonItem>
                 <IonLabel position="stacked">Phone</IonLabel>
-                <IonInput type="tel" {...register("hp")} placeholder="Enter your phone number" />
+                <IonInput type="tel" {...register("hp")} placeholder={userData.hp || "Enter your phone number"} />
                 {errors.hp && <p className="error-message">{errors.hp.message}</p>}
               </IonItem>
 
               <IonItem>
                 <IonLabel position="stacked">Address</IonLabel>
-                <IonInput type="text" {...register("alamat")} placeholder="Enter your address" />
+                <IonInput type="text" {...register("alamat")} placeholder={userData.alamat || "Enter your address"} />
                 {errors.alamat && <p className="error-message">{errors.alamat.message}</p>}
               </IonItem>
 
               <IonItem>
                 <IonLabel position="stacked">Image URL</IonLabel>
-                <IonInput type="text" {...register("img")} placeholder="Enter image URL" />
+                <IonInput type="text" {...register("img")} placeholder={userData.img || "Enter image URL"} />
                 {errors.img && <p className="error-message">{errors.img.message}</p>}
               </IonItem>
 
