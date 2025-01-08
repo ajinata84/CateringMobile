@@ -14,9 +14,11 @@ import "./beranda.css";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { Catering } from "@/types/interfaces";
+import { useCart } from "@/hooks/use-cart";
 
 export default function Beranda() {
   const router = useIonRouter();
+  const { items } = useCart();
 
   const [caterings, setCaterings] = useState<Catering[]>([]);
 
@@ -43,6 +45,7 @@ export default function Beranda() {
             <IonFabButton
               onClick={() => router.push("/purchase/cart", "forward", "push")}
             >
+              {items.length}
               <IonIcon icon={cartOutline} />
             </IonFabButton>
           </IonFab>

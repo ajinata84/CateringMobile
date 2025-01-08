@@ -51,7 +51,7 @@ export default function EditProfile() {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
           },
         });
-        const { username, email, password, hp, alamat, img } = response.data;
+        const { username, email, password, hp, alamat, img } = response.data.user;
 
         // Update userData dan form value
         setUserData({ username, email, password, hp, alamat, img });

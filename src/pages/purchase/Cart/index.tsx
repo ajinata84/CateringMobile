@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { IonPage, IonContent, IonFooter, IonIcon } from "@ionic/react";
-import { addOutline, removeOutline } from "ionicons/icons";
+import { addOutline, removeOutline, trash, trashBinOutline, trashBinSharp, trashOutline } from "ionicons/icons";
 import "./index.css";
 import AppHeader from "@/components/AppHeader";
 import { useCart } from "@/hooks/use-cart";
@@ -100,7 +100,7 @@ const CartCatering = () => {
                     }}
                     className="h-6 w-6 bg-gray-200 rounded-full flex items-center justify-center hover:bg-gray-300 !mt-0"
                   >
-                    <IonIcon icon={removeOutline} />
+                    {item.quantity === 1 ? <IonIcon icon={trashOutline} /> : <IonIcon icon={removeOutline} />}
                   </button>
 
                   <span className="font-semibold text-sm !mt-0">
