@@ -50,3 +50,15 @@ export interface Catering {
   Manajemens: any[];
   Pakets: Paket[];
 }
+
+export interface CateringSearch {
+  id: string;
+  nama: string;
+  alamat: string;
+  hp: string;
+  rating: number;
+  deskripsi: string;
+  imageUrl: string;
+  kategoris: string[];
+  makanan: Makanan[];
+}

@@ -9,6 +9,7 @@ import axios from "axios";
 import "./paket.css";
 import TimeIcon from "@/components/TimeIcon";
 import { useCart } from "@/hooks/use-cart";
+import TagChip from "@/components/TagChip";
 
 export default function PaketView() {
   const { cateringid, paketid } = useParams<{
@@ -70,12 +71,15 @@ export default function PaketView() {
       <IonContent>
         <div className="p-8 mb-20">
           <h1 className="font-semibold text-3xl">{paket.nama}</h1>
-          <div className="flex flex-row justify-between mt-4">
-            <span className="font-semibold !mt-0">
-              Rp. {paket.harga.toLocaleString()}
+          <div className="flex flex-row justify-between mt-4 items-center">
+            <span className="font-semibold !mt-0 ">
+              {`Rp. ${paket.harga.toLocaleString()}`}
             </span>
-            <div className="w-[30%] rounded-full bg-[#597445] text-white text-center p-2">
-              {paket.durasi} Hari
+            <div className="flex flex-row w-full justify-end gap-2">
+              {<TagChip tag={paket.kategori} />}
+              <div className="w-[30%] rounded-full bg-[#597445] text-white text-center p-2">
+                {paket.durasi} Hari
+              </div>
             </div>
           </div>
 

@@ -21,6 +21,7 @@ export default function Beranda() {
   const { items } = useCart();
 
   const [caterings, setCaterings] = useState<Catering[]>([]);
+  const [activeCategory, setActiveCategory] = useState("Semua");
 
   useEffect(() => {
     axios
@@ -31,13 +32,23 @@ export default function Beranda() {
       .catch((error) => console.error("Get Caterings Failed:", error));
   }, []);
 
+  const filteredCaterings =
+    activeCategory === "Semua"
+      ? caterings
+      : caterings.filter((catering) =>
+          catering.kategoris.includes(activeCategory)
+        );
+
   return (
     <IonPage>
       <IonContent>
         <div className="p-8">
-          <SearchFilters />
+          <SearchFilters
+            activeCategory={activeCategory}
+            setActiveCategory={setActiveCategory}
+          />
           <div className="p-1">
-            <CateringList caterings={caterings} />
+            <CateringList caterings={filteredCaterings} />
           </div>
         </div>
         {router.routeInfo.pathname === "/tabs/beranda" && (

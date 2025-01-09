@@ -3,6 +3,7 @@ import { LucideSun, LucideMoon, LucideSunrise } from "lucide-react";
 import React from "react";
 import { Paket } from "@/types/interfaces";
 import { getScheduleTimes } from "@/lib/utils";
+import TagChip from "../TagChip";
 
 interface PaketCardProps {
   paketRoute: string;
@@ -33,12 +34,12 @@ export default function PaketCard({ paketRoute, pakets }: PaketCardProps) {
         return (
           <div
             key={paket.id}
-            className="flex flex-row outline outline-2 outline-[#D5D5D5] active:bg-gray-100 h-72"
+            className="flex flex-row outline outline-2 outline-[#D5D5D5] active:bg-gray-100 h-auto max-h-96 "
             onClick={() => {
               router.push(`${paketRoute}/paket/${paket.id}`, "forward", "push");
             }}
           >
-            <div className="w-[55%] p-4 flex flex-col">
+            <div className="w-[55%] p-4 flex flex-col paket-desc">
               <h1 className="text-xl font-semibold">{paket.nama}</h1>
               <div className="mt-2 space-y-1 mb-4">
                 <ul className="text-sm">
@@ -72,12 +73,13 @@ export default function PaketCard({ paketRoute, pakets }: PaketCardProps) {
                 )}
               </div>
 
-              <span className="font-semibold !mt-2">
+              <span className="font-semibold !mt-2 my-4">
                 Rp. {paket.harga.toLocaleString()}
               </span>
+              {<TagChip tag={paket.kategori} />}
             </div>
             <div
-              className={`w-[45%] grid ${
+              className={`w-[45%] grid paket-images ${
                 foodImages.length === 3 ? "grid-rows-2" : "grid-rows-2"
               }`}
             >

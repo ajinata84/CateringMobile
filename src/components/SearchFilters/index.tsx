@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./index.css";
 import {
   IonHeader,
+  IonIcon,
   IonSearchbar,
   IonTitle,
   IonToolbar,
@@ -10,26 +11,41 @@ import {
 import { IonCol, IonGrid, IonRow } from "@ionic/react";
 import { History, ListFilter, MapPin } from "lucide-react";
 import PromoBanner from "../PromoBanner";
+import { Button } from "../ui/button";
+import { searchOutline } from "ionicons/icons";
 
-export default function SrachFilters() {
+interface searchFilterProps {
+  activeCategory: string;
+  setActiveCategory: (category: string) => void;
+}
+
+export default function SearchFilters({
+  activeCategory,
+  setActiveCategory,
+}: searchFilterProps) {
   const router = useIonRouter();
 
-  const [activeCategory, setActiveCategory] = useState("Harian"); // Default buat category
-  const categories = ["Harian", "Kantoran", "Pernikahan", "Acara"]; // List category
+  const categories = ["Semua", "Harian", "Kantoran", "Pernikahan", "Acara"];
 
   const goToSearch = () => {
-    router.push("/search/test", "forward", "push");
+    router.push("/search", "forward", "push");
   };
 
   return (
     <div className="mb-4">
-      <div className="fixed top-0 z-50 bg-white pt-4">
+      <div className="fixed top-0 z-50 bg-white pt-4 auto w-full pr-16">
         <div className="search-bar">
-          <IonSearchbar
-            value=""
-            class="custom"
+          <Button
+            className="justify-start w-full text-lg outline-offset-[-2px] rounded-[15px] h-[46px] py-3 px-6 outline outline-2 outline-[#597445] text-[#597445] hover:text-[#597445] hover:bg-[#f2f2f2]"
+            variant={"ghost"}
             onClick={goToSearch}
-          ></IonSearchbar>
+          >
+            <IonIcon
+              className="searchbar-search-icon sc-ion-searchbar-md md"
+              size="large"
+            />
+            Search
+          </Button>
         </div>
 
         <div className="location-history ">

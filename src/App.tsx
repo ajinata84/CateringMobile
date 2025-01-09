@@ -68,7 +68,7 @@ const App: React.FC = () => (
           <Route exact path="/login" component={Login} />
           <Route exact path="/register" component={Register} />
 
-          <Route exact path="/search/:params" component={Search} />
+          <Route exact path="/search" component={Search} />
           <Route exact path="/catering/:cateringid" component={Catering} />
           <Route
             exact
