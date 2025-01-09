@@ -76,7 +76,7 @@ const App: React.FC = () => (
             component={PaketView}
           />
 
-          <Route exact path="/detail/:detailid" component={Detail} />
+          <Route exact path="/transaksi/:transaksiId" component={Detail} />
 
           <Route exact path="/profile/edit-profile" component={EditProfile} />
           <Route exact path="/purchase/cart" component={Cart} />

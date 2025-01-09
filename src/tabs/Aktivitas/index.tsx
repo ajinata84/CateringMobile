@@ -1,10 +1,24 @@
 import { ChevronLeft } from "lucide-react";
 import React, { useEffect, useState } from "react";
 import "./index.css";
-import { IonContent, IonPage } from "@ionic/react";
+import { IonContent, IonPage, useIonRouter } from "@ionic/react";
 import axios from "axios";
+import TransactionList from "./TransactionList";
+import { Transaction } from "@/types/transaction-interfaces";
 
 export default function Aktivitas() {
+  const router = useIonRouter();
+  const pathName = router.routeInfo.pathname;
+  const [transactions, setTransactions] = useState<Transaction[]>([]);
+
+  const ongoingTransactions = transactions.filter(
+    (transaction) =>
+      !transaction.Orders.every((order) => order.statusOrder === "FINISHED")
+  );
+  const completedTransactions = transactions.filter((transaction) =>
+    transaction.Orders.every((order) => order.statusOrder === "FINISHED")
+  );
+
   const [activeTab, setActiveTab] = useState<"ongoing" | "completed">(
     "ongoing"
   );
@@ -22,18 +36,20 @@ export default function Aktivitas() {
             Authorization: `Bearer ${token}`,
           },
         });
-        console.log(response.data);
+        setTransactions(response.data);
       } catch (error) {
         console.error("Error fetching user data:", error);
       }
     };
 
-    fetchTransactions();
-  }, []);
+    if (pathName === "/tabs/aktivitas") {
+      fetchTransactions();
+    }
+  }, [pathName]);
 
   return (
     <IonPage>
-      <IonContent>
+      <div className="sticky top-0 z-50 bg-white w-full ">
         <div className="back-confirm">
           <p>List Transaksi</p>
         </div>
@@ -52,68 +68,23 @@ export default function Aktivitas() {
             Pesanan selesai
           </div>
         </div>
+      </div>
+      <IonContent>
+        {activeTab === "ongoing" &&
+          ongoingTransactions.map((transaction) => (
+            <TransactionList
+              transactionData={transaction}
+              key={transaction.id + "ongoing"}
+            />
+          ))}
 
-        {activeTab === "ongoing" && (
-          <div className="list-card">
-            <div className="card">
-              <div className="title">
-                <h1>Catering Ikan Nila</h1>
-                <p>2 Hari</p>
-              </div>
-
-              <div className="card-detail">
-                <div className="row">
-                  <p>Paket</p>
-                  <p className="information">Paket Murah</p>
-                </div>
-                <div className="row">
-                  <p>Tanggal Mulai</p>
-                  <p className="information">11/12/2024</p>
-                </div>
-                <div className="row">
-                  <p>Tanggal Selesai</p>
-                  <p className="information">13/12/2024</p>
-                </div>
-                <div className="row">
-                  <p>Total Harga</p>
-                  <p className="information">Rp150.000</p>
-                </div>
-              </div>
-            </div>
-
-            <div className="card">
-              <div className="title">
-                <h1>Catering Ayam Bakar</h1>
-                <p>1 Minggu</p>
-              </div>
-
-              <div className="card-detail">
-                <div className="row">
-                  <p>Paket</p>
-                  <p className="information">Paket Mantap</p>
-                </div>
-                <div className="row">
-                  <p>Tanggal Mulai</p>
-                  <p className="information">01/12/2024</p>
-                </div>
-                <div className="row">
-                  <p>Tanggal Selesai</p>
-                  <p className="information">07/12/2024</p>
-                </div>
-                <div className="row">
-                  <p>Total Harga</p>
-                  <p className="information">Rp300.000</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        )}
-
-        {activeTab === "completed" && (
-          <div className="content">
-            <p>Belum ada transaksi.</p>
-          </div>
-        )}
+        {activeTab === "completed" &&
+          completedTransactions.map((transaction) => (
+            <TransactionList
+              transactionData={transaction}
+              key={transaction.id + "ongoing"}
+            />
+          ))}
       </IonContent>
     </IonPage>
   );

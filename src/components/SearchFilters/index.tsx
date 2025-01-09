@@ -40,10 +40,7 @@ export default function SearchFilters({
             variant={"ghost"}
             onClick={goToSearch}
           >
-            <IonIcon
-              className="searchbar-search-icon sc-ion-searchbar-md md"
-              size="large"
-            />
+            
             Search
           </Button>
         </div>

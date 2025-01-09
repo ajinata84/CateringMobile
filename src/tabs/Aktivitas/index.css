@@ -14,7 +14,6 @@
   background-color: #ffffff;
   color: #333;
   font-size: 14px;
-  margin-bottom: 25px;
 }
 
 .tab-container .tab {
@@ -43,7 +42,6 @@
   border-radius: 16px;
   background-color: white;
   padding: 18px 21px;
-  margin: 10px 20px 10px 20px;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
   transition: box-shadow 0.3s ease;
 }

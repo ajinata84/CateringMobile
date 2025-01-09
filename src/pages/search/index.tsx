@@ -25,13 +25,11 @@ export default function Search() {
   const debouncedSearch = useCallback(
     debounce(async (query: string) => {
       try {
-        console.log("loading");
         setIsLoading(true);
         const response = await axios.post<CateringSearch[]>(
           `http://localhost:3000/catering/search?query=${query}`
         );
         setSearchResults(response.data);
-        console.log("loaded");
       } catch (error) {
         console.error("Search error:", error);
         setSearchResults([]);

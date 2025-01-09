@@ -12,24 +12,21 @@ export default function Profil() {
     username: "",
     email: "",
     img: "",
-  }); // State untuk menyimpan data user
-  const history = useHistory(); // Hook untuk navigasi
+  });
+  const history = useHistory();
 
   useEffect(() => {
-    // Fungsi untuk fetch data user
     const fetchUserData = async () => {
       try {
-        const token = localStorage.getItem("token"); // Ambil token dari localStorage
+        const token = localStorage.getItem("token");
         const response = await axios.get("http://localhost:3000/customer/me", {
           headers: {
-            Authorization: `Bearer ${token}`, // Kirim token sebagai header Authorization
+            Authorization: `Bearer ${token}`,
           },
         });
         setUser(response.data.user);
-        // Simpan data user di state
       } catch (error) {
         console.error("Error fetching user data:", error);
-        // Redirect ke halaman login jika token tidak valid atau terjadi error
         history.push("/login");
       }
     };
