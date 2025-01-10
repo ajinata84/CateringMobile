@@ -47,11 +47,10 @@ export default function Detail() {
       .then((response) => {
         const tempTransaksi = response.data;
 
-        const nettPrice =
-          tempTransaksi.Orders.reduce(
-            (acc, order) => acc + order.totalHarga,
-            0
-          ) ;
+        const nettPrice = tempTransaksi.Orders.reduce(
+          (acc, order) => acc + order.totalHarga,
+          0
+        );
         const totalPrice =
           tempTransaksi.Orders.reduce(
             (acc, order) => acc + order.totalHarga,
@@ -93,6 +92,11 @@ export default function Detail() {
                   {transactionStartDate.toLocaleDateString("id-ID", options)} -{" "}
                   {orderEndDate.toLocaleDateString("id-ID", options)}
                 </p>
+              </div>
+
+              <div className="menu-catering">
+                <h1>Status</h1>
+                <p>{order.statusOrder}</p>
               </div>
 
               <div className="bottom-border"></div>

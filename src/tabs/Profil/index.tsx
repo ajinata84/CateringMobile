@@ -1,6 +1,25 @@
 import React, { useState, useEffect } from "react";
-import { IonHeader, IonToolbar, IonTitle, IonContent, IonIcon, IonButton, IonToggle, IonItem, IonLabel, IonList, IonPage } from "@ionic/react";
-import { logOutOutline, storefrontOutline, helpCircleOutline, notificationsOutline, lockClosedOutline, keyOutline } from "ionicons/icons";
+import {
+  IonHeader,
+  IonToolbar,
+  IonTitle,
+  IonContent,
+  IonIcon,
+  IonButton,
+  IonToggle,
+  IonItem,
+  IonLabel,
+  IonList,
+  IonPage,
+} from "@ionic/react";
+import {
+  logOutOutline,
+  storefrontOutline,
+  helpCircleOutline,
+  notificationsOutline,
+  lockClosedOutline,
+  keyOutline,
+} from "ionicons/icons";
 import "./profil.css";
 import { ArrowBigLeft } from "lucide-react";
 import axios from "axios";
@@ -37,12 +56,13 @@ export default function Profil() {
   // Fungsi logout
   const handleLogout = () => {
     localStorage.removeItem("token"); // Hapus token dari localStorage
-    history.push("/login");
+
     // Redirect ke halaman login
     toast("Logout Successful", {
       description: "Redirecting to Login page...",
       position: "top-center",
     });
+    window.location.reload();
   };
 
   const handleAboutus = () => {
@@ -57,14 +77,19 @@ export default function Profil() {
             <>
               <div className="profile-avatar">
                 <img
-                  src={user.img} // Ganti dengan URL avatar
+                  src={user.img || "https://objects.djie.cloud/aji/user-128.png"} // Ganti dengan URL avatar
                   alt="Profile Avatar"
+                  className="object-cover"
                 />
               </div>
               <br />
               <h2 className="profile_name">{user.username}</h2>
               <p className="profile-email">{user.email}</p>
-              <IonButton expand="block" className="edit-profile-button" routerLink="/profile/edit-profile">
+              <IonButton
+                expand="block"
+                className="edit-profile-button"
+                routerLink="/profile/edit-profile"
+              >
                 Edit Profile
               </IonButton>
             </>
@@ -106,11 +131,21 @@ export default function Profil() {
 
         {/* Logout Section */}
 
-        <IonButton expand="block" color="danger" onClick={handleLogout} className="logout-button">
+        <IonButton
+          expand="block"
+          color="danger"
+          onClick={handleLogout}
+          className="logout-button"
+        >
           <IonIcon slot="start" icon={logOutOutline} />
           Logout
         </IonButton>
-        <IonButton expand="block" color={"primary"} onClick={handleAboutus} className="logout-button">
+        <IonButton
+          expand="block"
+          color={"primary"}
+          onClick={handleAboutus}
+          className="logout-button"
+        >
           <IonIcon slot="start" />
           About US
         </IonButton>

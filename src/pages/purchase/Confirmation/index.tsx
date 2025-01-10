@@ -72,7 +72,9 @@ export default function Confirmation() {
           },
         });
         setUserData(response.data.user);
-        setAlamat(response.data.user.alamat);
+        setAlamat(
+          response.data.user.alamat !== null ? response.data.user.alamat : ""
+        );
       } catch (error) {
         console.error("Error fetching user data:", error);
       }
