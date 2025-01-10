@@ -57,6 +57,7 @@ import "./theme/globals.css";
 import Catering from "./pages/catering";
 import PaketView from "./pages/paketview";
 import Detail from "./pages/detail";
+import ProtectedRoute from "./components/ProtectedRoute";
 
 setupIonicReact();
 
@@ -68,30 +69,46 @@ const App: React.FC = () => (
           <Route exact path="/login" component={Login} />
           <Route exact path="/register" component={Register} />
 
-          <Route exact path="/search" component={Search} />
-          <Route exact path="/catering/:cateringid" component={Catering} />
-          <Route
+          <ProtectedRoute exact path="/search" component={Search} />
+          <ProtectedRoute
+            exact
+            path="/catering/:cateringid"
+            component={Catering}
+          />
+          <ProtectedRoute
             exact
             path="/catering/:cateringid/paket/:paketid"
             component={PaketView}
           />
 
-          <Route exact path="/transaksi/:transaksiId" component={Detail} />
+          <ProtectedRoute
+            exact
+            path="/transaksi/:transaksiId"
+            component={Detail}
+          />
 
-          <Route exact path="/profile/edit-profile" component={EditProfile} />
-          <Route exact path="/purchase/cart" component={Cart} />
-          <Route exact path="/purchase/confirmation" component={Confirmation} />
+          <ProtectedRoute
+            exact
+            path="/profile/edit-profile"
+            component={EditProfile}
+          />
+          <ProtectedRoute exact path="/purchase/cart" component={Cart} />
+          <ProtectedRoute
+            exact
+            path="/purchase/confirmation"
+            component={Confirmation}
+          />
 
-          <Route exact path="/tabs/aktivitas" component={Aktivitas} />
-          <Route exact path="/tabs/beranda" component={Beranda} />
-          <Route exact path="/tabs/profil" component={Profil} />
-          <Route exact path="/tabs">
+          <ProtectedRoute exact path="/tabs/aktivitas" component={Aktivitas} />
+          <ProtectedRoute exact path="/tabs/beranda" component={Beranda} />
+          <ProtectedRoute exact path="/tabs/profil" component={Profil} />
+          <ProtectedRoute exact path="/tabs">
             <Redirect to="/tabs/beranda" />
-          </Route>
+          </ProtectedRoute>
 
-          <Route exact path="/">
+          <ProtectedRoute exact path="/">
             <Redirect to="/tabs" />
-          </Route>
+          </ProtectedRoute>
         </IonRouterOutlet>
 
         <TabBar />
