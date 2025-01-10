@@ -14,6 +14,15 @@ export default function AppHeader({ title }: { title?: string }) {
   const router = useIonRouter();
   const { items } = useCart();
 
+  console.log(router.routeInfo.pathname.includes("/transaksi"));
+
+  const disabledCarts = [
+    "/purchase/cart",
+    "/purchase/confirmation",
+    "/transaksi",
+    "/about-us",
+  ];
+
   return (
     <IonHeader className="ion-no-border">
       <IonToolbar>
@@ -30,8 +39,8 @@ export default function AppHeader({ title }: { title?: string }) {
             <ChevronLeft />
           </IonButton>
         </IonButtons>
-        {router.routeInfo.pathname != "/purchase/cart" &&
-          router.routeInfo.pathname != "/purchase/confirmation" &&
+        {!disabledCarts.includes(router.routeInfo.pathname) &&
+          !router.routeInfo.pathname.startsWith("/transaksi/") &&
           items.length > 0 && (
             <IonButtons slot="end">
               <IonButton

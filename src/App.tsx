@@ -58,6 +58,7 @@ import Catering from "./pages/catering";
 import PaketView from "./pages/paketview";
 import Detail from "./pages/detail";
 import ProtectedRoute from "./components/ProtectedRoute";
+import AboutUs from "./pages/about";
 
 setupIonicReact();
 
@@ -98,6 +99,8 @@ const App: React.FC = () => (
             path="/purchase/confirmation"
             component={Confirmation}
           />
+
+          <ProtectedRoute exact path="/about-us" component={AboutUs} />
 
           <ProtectedRoute exact path="/tabs/aktivitas" component={Aktivitas} />
           <ProtectedRoute exact path="/tabs/beranda" component={Beranda} />

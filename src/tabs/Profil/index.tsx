@@ -56,7 +56,11 @@ export default function Profil() {
   // Fungsi logout
   const handleLogout = () => {
     localStorage.removeItem("token"); // Hapus token dari localStorage
-
+    localStorage.removeItem("customerId");
+    localStorage.removeItem("userId");
+    localStorage.removeItem("username");
+    localStorage.removeItem("cart-storage");
+    
     // Redirect ke halaman login
     toast("Logout Successful", {
       description: "Redirecting to Login page...",
