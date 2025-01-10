@@ -43,7 +43,7 @@ export default function AboutUs() {
           {peoples.map((people) => (
             <div className=" w-full ">
               <img src={people.img} alt="" className="h-60 object-cover" />
-              <div className="p-2 flex flex-col justify-between">
+              <div className="p-2 flex flex-col justify-between text-center">
                 <span className="font-medium w-full mb-2">{people.name}</span>
                 <h6>{people.role}</h6>
               </div>
