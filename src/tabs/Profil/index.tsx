@@ -45,6 +45,10 @@ export default function Profil() {
     });
   };
 
+  const handleAboutus = () => {
+    history.push("/about-us"); // Redirect ke halaman About Us
+  };
+
   return (
     <IonPage>
       <IonContent>
@@ -105,6 +109,10 @@ export default function Profil() {
         <IonButton expand="block" color="danger" onClick={handleLogout} className="logout-button">
           <IonIcon slot="start" icon={logOutOutline} />
           Logout
+        </IonButton>
+        <IonButton expand="block" color={"primary"} onClick={handleAboutus} className="logout-button">
+          <IonIcon slot="start" />
+          About US
         </IonButton>
       </IonContent>
     </IonPage>
